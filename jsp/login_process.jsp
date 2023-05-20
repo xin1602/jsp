@@ -10,30 +10,41 @@
 
   try {
     // 建立資料庫連線
-    String dburl = "jdbc:mysql://localhost:3306/bookstore";
+    String dburl = "jdbc:mysql://localhost:3306/bookstore?characterEncoding=utf8";
     String dbusername = "root";
     String dbpassword = "1234";
     conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
 
     // 檢查帳號密碼是否正確
-    String query = "SELECT * FROM members WHERE username = ? AND password = ?";
+    String query = "SELECT * FROM members WHERE email = ? AND password = ?";
     stmt = conn.prepareStatement(query);
     stmt.setString(1, username);
     stmt.setString(2, password);
     ResultSet rs = stmt.executeQuery();
 
     if (rs.next()) {
+      // 登入成功，設定 session 變數
+      String memberName = rs.getString("member_name");
       session.setAttribute("loggedIn", true);
-      // 登入成功，導向會員頁面或其他處理
+      session.setAttribute("username", memberName);
+
+      // 導向首頁
       response.sendRedirect("index.jsp");
     } else {
-      // 登入失敗，返回登入頁面並顯示錯誤訊息
-      response.sendRedirect("login.jsp?error=invalid");
+      // 登入失敗，返回登入頁面
+      request.getSession().setAttribute("error", "invalid");
+      response.sendRedirect("login.jsp");
     }
+  } catch (SQLException e) {
+    e.printStackTrace();
+    // 處理資料庫錯誤，返回登入頁面
+    request.getSession().setAttribute("error", "database");
+    response.sendRedirect("login.jsp");
   } catch (Exception e) {
     e.printStackTrace();
-    // 處理例外情況，返回登入頁面並顯示錯誤訊息
-    response.sendRedirect("login.jsp?error=unknown");
+    // 處理其他例外情況，返回登入頁面
+    request.getSession().setAttribute("error", "unknown");
+    response.sendRedirect("login.jsp");
   } finally {
     // 關閉資源
     if (stmt != null) {

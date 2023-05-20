@@ -8,19 +8,33 @@
 </head>
 <body>
   <h1>登入</h1>
-
-  <%-- 檢查是否有錯誤訊息 --%>
-  <% String error = request.getParameter("error"); %>
-  <% if (error != null && error.equals("invalid")) { %>
-    <p class="error">帳號或密碼錯誤</p>
-  <% } %>
-
-  <%-- 檢查是否有成功訊息 --%>
-  <% String success = request.getParameter("success"); %>
-  <% if (success != null && success.equals("true")) { %>
-    <p class="success">登入成功</p>
-  <% } %>
-
+ 
+ 	  <% // 正式
+	  String error = (String) session.getAttribute("error");
+	  if (error != null) {
+	    if (error.equals("invalid")) {
+	      out.println("<p class='error'>無效的帳號或密碼。</p>");
+	    } else {
+		  out.println("<p class='error'>發生錯誤。請稍後再試。</p>");
+		}
+	  }
+	  session.removeAttribute("error");
+	%>
+	<%-- //測試用
+	  String error = (String) session.getAttribute("error");
+	  if (error != null) {
+	    if (error.equals("invalid")) {
+	      out.println("<p class='error'>無效的帳號或密碼。</p>");
+	    } else if (error.equals("database")) {
+	      out.println("<p class='error'>資料庫錯誤。請稍後再試。</p>");
+	    } else if (error.equals("unknown")) {
+	      out.println("<p class='error'>發生未知錯誤。請稍後再試。</p>");
+	    } else {
+		  out.println("<p class='error'>發生錯誤。請稍後再試。</p>");
+		}
+	  }
+	  session.removeAttribute("error");
+	--%>
   <form action="login_process.jsp" method="POST">
     <div class="form-group">
       <label for="username">帳號：</label>
@@ -36,5 +50,9 @@
       <button type="submit">登入</button>
     </div>
   </form>
+    <div class="form-group">
+    <p>還沒有帳號？</p>
+    <a href="register.jsp">註冊</a>
+  </div>
 </body>
 </html>

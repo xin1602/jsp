@@ -5,11 +5,16 @@
 <head>
   <title>Bookstore</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <!-- <link rel="stylesheet" type="text/css" href="../css/index.css"> -->
 </head>
 <body>
   <header>
-    <h1>Welcome to the Bookstore</h1>
+    <% boolean loggedIn = (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")); %>
+    
+	<% if (loggedIn) { %>
+	  <h1>Welcome, <%= session.getAttribute("username") %></h1>
+	<% } else { %>
+	  <h1>Welcome</h1>
+	<% } %>
   </header>
 
 <nav>
@@ -18,7 +23,6 @@
     <li><a href="books.jsp">Books</a></li>
     <li><a href="member.jsp">Member</a></li>
     <li>
-      <% boolean loggedIn = (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")); %>
       <% if (loggedIn) { %>
         <a href="logout.jsp">Logout</a>
       <% } else { %>
@@ -32,7 +36,7 @@
 
   <section>
     <h2>Featured Books</h2>
-    <%
+    <%--
       // 建立資料庫連接
       String url = "jdbc:mysql://localhost:3306/bookstore";
       String username = "root";
@@ -44,26 +48,26 @@
       Statement stmt = conn.createStatement();
       ResultSet rs = stmt.executeQuery(query);
 
-      // 迭代顯示每本書籍的資訊
+      // 顯示每本書籍的資訊
       while (rs.next()) {
         String title = rs.getString("title");
         String author = rs.getString("author");
         double price = rs.getDouble("price");
         // String imageUrl = rs.getString("image_url");
-    %>
+    --%>
     <div class="book">
-      <h3><%= title %></h3>
-      <p>Author: <%= author %></p>
-      <p>Price: <%= price %></p>
+      <h3><%--= title --%></h3>
+      <p>Author: <%--= author --%></p>
+      <p>Price: <%--= price --%></p>
     </div>
-    <%
+    <%--
       }
 
       // 關閉資源
       rs.close();
       stmt.close();
       conn.close();
-    %>
+    --%>
   </section>
 
   <footer>

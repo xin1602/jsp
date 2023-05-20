@@ -2,27 +2,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>註冊</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <title>註冊</title>
 </head>
 <body>
-  <h1>註冊</h1>
-
-  <form action="register_process.jsp" method="POST">
-    <div class="form-group">
-      <label for="username">帳號：</label>
-      <input type="text" id="username" name="username" required>
-    </div>
-
-    <div class="form-group">
-      <label for="password">密碼：</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-
-    <div class="form-group">
-      <button type="submit">註冊</button>
-    </div>
-  </form>
+    <h1>註冊</h1>
+     <% // 正式
+	  String error = (String) session.getAttribute("error");
+	  if (error != null) {
+	    if (error.equals("invalid")) {
+	      out.println("<p class='error'>無效的帳號或密碼。</p>");
+	    } else {
+		  out.println("<p class='error'>發生錯誤。請稍後再試。</p>");
+		}
+	  }
+	  session.removeAttribute("error");
+	--%>
+	<%-- //測試
+	  String error = (String) session.getAttribute("error");
+	  if (error != null) {
+	    if (error.equals("invalid")) {
+	      out.println("<p class='error'>無效的輸入。請確保填寫必填欄位。</p>");
+	    } else if (error.equals("duplicate")) {
+		  out.println("<p class='error'>已經有重複的帳號申請。</p>");
+		} else if (error.equals("database")) {
+	      out.println("<p class='error'>資料庫錯誤。請稍後再試。</p>");
+	    } else if (error.equals("unknown")) {
+	      out.println("<p class='error'>發生未知錯誤。請稍後再試。</p>");
+	    }
+	  }
+	  session.removeAttribute("error");
+	--%>
+    
+    <form action="register_process.jsp" method="post" >  
+        <label for="email">電子郵件(帳號)：</label>
+        <input type="email" name="email" id="email" required><br>
+        
+        <label for="password">密碼：</label>
+        <input type="password" name="password" id="password" required><br>
+        
+        <label for="memberName">姓名：</label>
+        <input type="text" name="memberName" id="memberName" required><br>
+        
+        <label for="phoneNumber">電話號碼：</label>
+        <input type="tel" name="phoneNumber" id="phoneNumber" required><br>
+        
+        <label for="county">縣市區：</label>
+        <input type="text" name="county" id="county" required><br>
+        
+        <label for="district">鄉鎮市區：</label>
+        <input type="text" name="district" id="district" required><br>
+        
+        <label for="address">詳細地址：</label>
+        <input name="address" id="address" required><br>
+        
+        <label for="birthday">生日：</label>
+        <input type="date" name="birthday" id="birthday" required><br>
+        
+        <input type="submit" value="註冊">
+    </form>
 </body>
 </html>
