@@ -16,7 +16,7 @@
   // 驗證表單欄位
   if (memberName == null || email == null || password == null || memberName.isEmpty() || email.isEmpty() || password.isEmpty()) {
 	request.getSession().setAttribute("error", "invalid");
-    response.sendRedirect("register.jsp?error=invalid");
+    response.sendRedirect("update_profile_data.jsp?error=invalid");
   }
 
   Connection conn = null;
@@ -29,48 +29,42 @@
     String dbpassword = "1234";
     conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
 
-    // 檢查帳號是否已存在
     String checkQuery = "SELECT * FROM members WHERE email = ?";
     stmt = conn.prepareStatement(checkQuery);
     stmt.setString(1, email);
     ResultSet rs = stmt.executeQuery();
 
     if (rs.next()) {
-      // 帳號已存在，返回註冊頁面 error=duplicate
-    	request.getSession().setAttribute("error", "duplicate");
-    	response.sendRedirect("register.jsp");
+    	int memberID = rs.getInt("member_id");
+		String updateQuery = "UPDATE members SET member_name = ?, email = ?, password = ?, gender = ?, phone_number = ?, county = ?, district = ?, address = ?, birthday = ? WHERE member_id = ?";
+			
+		stmt = conn.prepareStatement(updateQuery);
+		
+		stmt.setString(1, memberName);
+		stmt.setString(2, email);
+		stmt.setString(3, password);
+		stmt.setString(4, gender);
+		stmt.setString(5, phoneNumber);
+		stmt.setString(6, county);
+		stmt.setString(7, district);
+		stmt.setString(8, address);
+		stmt.setString(9, birthday);
+		stmt.setInt(10, memberID);
+		
+		stmt.executeUpdate();
 
-    } else {
-      // 帳號不存在，進行註冊
-      String insertQuery = "INSERT INTO members (member_name, email, password, gender, phone_number, county, district, address, birthday, registration_date = CURRENT_TIMESTAMP) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	
-	  stmt = conn.prepareStatement(insertQuery.toString());
-
-	  stmt.setString(1, memberName);
-	  stmt.setString(2, email);
-	  stmt.setString(3, password);
-	  stmt.setString(4, gender);
-	  stmt.setString(5, phoneNumber);
-	  stmt.setString(6, county);
-	  stmt.setString(7, district);
-	  stmt.setString(8, address);
-	  stmt.setString(9, birthday);
-      
-      stmt.executeUpdate();
 
       // 註冊成功，導向登入頁面
-      response.sendRedirect("login.jsp");
+      response.sendRedirect("index.jsp");
     }
   } catch (SQLException e) {
     e.printStackTrace();
-    // 處理資料庫錯誤，返回註冊頁面  error=database
+    // 處理資料庫錯誤，返回修改頁面  error=database
     request.getSession().setAttribute("error", "database");
-    response.sendRedirect("register.jsp?error=database");
   } catch (Exception e) {
     e.printStackTrace();
-    // 處理其他例外情況，返回註冊頁面  error=unknown
+    // 處理其他例外情況，返回修改頁面  error=unknown
     request.getSession().setAttribute("error", "unknown");
-    response.sendRedirect("register.jsp?error=unknown");
   } finally {
     // 關閉資源
     if (stmt != null) {

@@ -25,8 +25,10 @@
     if (rs.next()) {
       // 登入成功，設定 session 變數
       String memberName = rs.getString("member_name");
+      String memberEmail = rs.getString("email");
       session.setAttribute("loggedIn", true);
       session.setAttribute("username", memberName);
+      session.setAttribute("userEmail", memberEmail);
 
       // 導向首頁
       response.sendRedirect("index.jsp");

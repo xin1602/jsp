@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>註冊</h1>
-     <% // 正式
+     <%-- // 正式
 	  String error = (String) session.getAttribute("error");
 	  if (error != null) {
 	    if (error.equals("invalid")) {
@@ -17,7 +17,7 @@
 	  }
 	  session.removeAttribute("error");
 	--%>
-	<%-- //測試
+	<% //測試
 	  String error = (String) session.getAttribute("error");
 	  if (error != null) {
 	    if (error.equals("invalid")) {
@@ -31,17 +31,24 @@
 	    }
 	  }
 	  session.removeAttribute("error");
-	--%>
-    
-    <form action="register_process.jsp" method="post" >  
+	%>
+    <form action="register_process.jsp" method="post" >
+    	<label for="memberName">會員姓名</label>
+        <input type="text" name="memberName" id="memberName" required><br>
+        
         <label for="email">電子郵件(帳號)：</label>
         <input type="email" name="email" id="email" required><br>
         
         <label for="password">密碼：</label>
         <input type="password" name="password" id="password" required><br>
         
-        <label for="memberName">姓名：</label>
-        <input type="text" name="memberName" id="memberName" required><br>
+        <label for="gender">性別：</label>
+		<input type="radio" name="gender" id="genderMale" value="male" required>
+		<label for="genderMale">男性</label>
+		<input type="radio" name="gender" id="genderFemale" value="female" required>
+		<label for="genderFemale">女性</label>
+		<input type="radio" name="gender" id="genderOther" value="other" required>
+		<label for="genderOther">其他</label><br>
         
         <label for="phoneNumber">電話號碼：</label>
         <input type="tel" name="phoneNumber" id="phoneNumber" required><br>
