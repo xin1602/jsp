@@ -21,7 +21,9 @@
   <ul>
     <li><a href="index.jsp">Home</a></li>
     <li><a href="books.jsp">Books</a></li>
-    <li><a href="member.jsp">Member</a></li>
+    <% if (loggedIn) { %>
+    <li><a href="update_profile_data.jsp">Member Data</a></li>
+    <% } %>
     <li>
       <% if (loggedIn) { %>
         <a href="logout.jsp">Logout</a>
