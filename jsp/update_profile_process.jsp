@@ -54,7 +54,11 @@
 		stmt.executeUpdate();
 
 
-      // 註冊成功，導向登入頁面
+      // 修改成功，導向首頁並取得更新後資料
+      memberName = rs.getString("member_name");
+      String memberEmail = rs.getString("email");
+      session.setAttribute("username", memberName);
+      session.setAttribute("userEmail", memberEmail);
       response.sendRedirect("index.jsp");
     }
   } catch (SQLException e) {

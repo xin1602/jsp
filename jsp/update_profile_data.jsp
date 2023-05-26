@@ -64,8 +64,8 @@
 		    	out.println("<input type='text' name='memberName' id='memberName' value='" + memberName + "' required><br>");
 		    	out.println("<label for='email'>電子郵件(帳號)：</label>");
 		    	out.println("<input type='email' name='email' id='email' value='" + email + "' required><br>");
-		    	out.println("<label for='newPassword'>新密碼：</label>");
-		    	out.println("<input type='password' name='newPassword' id='newPassword' required><br>");
+		    	out.println("<label for='password'>新密碼：</label>");
+		    	out.println("<input type='password' name='password' id='password' value='********' required><br>");
 		    	out.println("<label for='gender'>性別：</label>");
 		    	out.println("<input type='text' name='gender' id='gender' value='" + gender + "' required><br>");
 		    	out.println("<label for='phoneNumber'>電話號碼：</label>");
