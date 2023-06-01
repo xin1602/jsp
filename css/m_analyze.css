@@ -1,0 +1,28 @@
+*{
+    font-family: 標楷體,Arial;
+}
+p{
+    margin: 50px 0 0 0;
+    color: white;
+    text-align: center;
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+.analyze{
+    border-color: #cf3030;
+    width: 1150px;
+    margin: 50px 180px;
+    text-align: center;
+    font-size: 15pt;
+}
+
+.analyze_text{
+    height: 350px;
+
+
+}
+
+.analyze_text2{
+    width: 400px;
+}

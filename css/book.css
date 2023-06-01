@@ -1,0 +1,202 @@
+.array1 {
+    width: 100%;
+}
+
+.array2 {
+    width: 80%;
+    display: flex;
+    margin: 50px auto;
+}
+
+.img {
+    float: left;
+    width: 30%;
+    margin: 90px;
+    vertical-align: middle;
+}
+
+.c {
+    float: right;
+    font-size: 16pt;
+}
+
+.clear {
+    clear: both;
+}
+
+.sep {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.word {
+    width: 70%;
+    margin: 50px auto;
+    font-size: 20px;
+}
+
+.comment {
+    margin: 100px auto;
+    padding: 15px;
+    width: 70%;
+    background-color: rgba(207, 48, 48, 0.3);
+    border-radius: 40px;
+}
+
+.comment h1 {
+    text-align: center;
+}
+
+.QAQ {
+    margin: 20px;
+}
+
+.cmt_pro {
+    border-radius: 50%;
+}
+
+.comment_text {
+    margin: 10px;
+}
+
+.flex_center {
+    display: flex;
+}
+
+hr {
+    width: 98%;
+    margin: 20px auto;
+}
+
+.overstar {
+    font-size: 30px;
+}
+
+.stars {
+    display: inline-block;
+    position: absolute;
+    margin: 0 auto;
+}
+
+.stars label {
+    float: right;
+    color: gray;
+}
+
+.stars label::after {
+    content: '★';
+    font-size: 60px;
+    padding: 22px;
+    display: inline-block;
+    line-height: 1;
+}
+
+.stars input:checked~label,
+.stars label:hover~label,
+.stars label:hover {
+    color: gold;
+    cursor: pointer;
+}
+
+.write {
+    margin: 120px 20px 20px;
+    width: 95%;
+    max-height: 100px;
+    font-size: 20pt;
+}
+
+#send {
+    font-size: 16pt;
+    width: 25%;
+    border: none;
+    border-radius: 40px;
+    margin: 10px 350px;
+    background: linear-gradient(to top, darkred, lightpink);
+    color: #ededed;
+    padding: 10px;
+}
+
+.book {
+    text-align: center;
+    width: 100%;
+}
+
+.book p {
+    font-size: 40px;
+    padding: 10px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+.image img {
+    width: 250px;
+    height: 300px;
+}
+
+.recom {
+    margin: 10px;
+}
+
+.recom p {
+    font-size: 20px;
+}
+
+.shopping {
+    margin: 30px 0px 10px 0px;
+}
+
+.btn {
+    width: 60px;
+    height: 40px;
+    border: none;
+    border-radius: 30px;
+    color: #ededed;
+    background-color: rgba(207, 48, 48, 0.7);
+    font-size: 14pt;
+}
+
+.btn:hover {
+    background-color: #ededed;
+    color: black;
+}
+
+.minus {
+    margin-right: 10px;
+}
+
+.add {
+    margin-left: 10px;
+}
+
+.input_num {
+    color: black;
+    text-align: center;
+    border: none;
+    border-radius: 30px;
+    width: 80px;
+    height: 40px;
+    font-size: 14px;
+}
+
+.button_shop {
+    color: #ededed;
+    margin-top: 30px;
+    height: 40px;
+    width: 145px;
+    font-size: 14pt;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(207, 48, 48, 0.7);
+}
+
+.button_shop:hover {
+    background-color: #ededed;
+    color: black;
+}
+
+.cart {
+    margin-right: 30px;
+}

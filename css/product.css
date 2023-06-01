@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+    margin: 20px 0px 10px 0px;
+}
+
+table {
+    width: 80%;
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+tr,
+td {
+    padding: 10px;
+}
+
+td img {
+    width: 300px;
+}
+
+table a {
+    color: #ededed;
+    text-decoration: none;
+}
