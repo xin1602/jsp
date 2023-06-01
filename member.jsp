@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar！ | 會員中心</title>
+    <link rel="icon" type="image" href="img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/member.css">
+</head>
+
+<nav>
+    <!--Logo-->
+    <div class="logo"><a href="index.html"><img src="img/logo.png" alt="logo"></a></div>
+    <!--產品分類-->
+    <!--參考資料：https://www.astralweb.com.tw/pure-css-drop-down-menu/-->
+    <ul class="product">產品分類&equiv;
+        <ul class="dropdown-menu">
+            <li><a href="product.html">恐怖</a></li>
+            <li><a href="product.html">愛情</a></li>
+            <li><a href="product.html">懸疑</a></li>
+            <li><a href="product.html">科幻</a></li>
+        </ul>
+    </ul>
+    <!--關於我們-->
+    <div class="aboutus"><a href="about_team.html">關於我們</a></div>
+    <!--會員中心-->
+    <div class="mem-center"><a href="member.html">會員中心</a></div>
+    <div class="nav_img">
+        <!--會員登入/會員資料-->
+        <a href="login.html"><img src="img/member.png" alt="member"></a>
+        <!--購物車-->
+        <a href="cart.html"><img src="img/cart.png" alt="cart"></a>
+        
+    </div>
+    <input type="search" id="search" placeholder="Search for something...">
+    <!--搜尋-->
+    <input type="image" name="submit_Btn" id="submit_Btn" img src="img/search.png" onClick="" >
+</nav>
+
+<body>
+    <div class="sec">
+        <h1>會員資料</h1>
+        <hr>
+        <div class="revise">
+            <form action="#">
+                <label for="name">姓名</label>
+                <input type="text" name="member-name" id="name" placeholder="User123"><br>
+                <label for="bday">生日</label>
+                <input type="text" name="birth" id="bday" placeholder="2002-11-01"><br>
+                <label for="gender">性別</label>
+                <input type="text" name="gender" id="gender" value="男" readonly><br>
+                <label for="tel">電話</label>
+                <input type="text" name="tel" id="tel" placeholder="0912345678"><br>
+                <label for="city">縣市</label>
+                <input type="text" name="city" id="city" placeholder="桃園市"><br>
+                <label for="city">鄉鎮區</label>
+                <input type="text" name="district" id="district" placeholder="中壢區"><br>
+                <label for="addr">地址</label>
+                <input type="text" name="addr" id="addr" placeholder="320桃園市中壢區中北路200號"><br>
+                <label for="email">郵箱</label>
+                <input type="text" name="member-email" id="email" value="user123@gmail.com" readonly><br>
+                <label for="password">密碼</label>
+                <input type="password" name="member-password" id="psw" value="abc123" readonly><br>
+                <input type="button" value="修改" id="revise_btn" onclick="location.href='#revisee'">
+            </form>
+        </div>
+    </div>
+
+    <div class="sec">
+        <h1>訂單記錄</h1>
+        <hr>
+        <table>
+            <tr>
+                <td>產品圖片</td>
+                <td>產品名稱</td>
+                <td>單價</td>
+                <td>數量</td>
+                <td>小計</td>
+            </tr>
+            <tr>
+                <td><img src="img/horry/horry01.jpg" alt=""></td>
+                <td>樓下的房客</td>
+                <td>$260</td>
+                <td>2</td>
+                <td>$520</td>
+            </tr>
+            <tr>
+                <td><img src="img/love/love01.jpg" alt=""></td>
+                <td>喜歡你的日子像海</td>
+                <td>$252</td>
+                <td>1</td>
+                <td>$252</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>總計：</td>
+                <td>$772</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="sec">
+        <table>
+            <tr>
+                <td>產品圖片</td>
+                <td>時間</td>
+                <td>產品名稱</td>
+                <td>評論內容</td>
+            </tr>
+            <tr>
+                <td><img src="img/fantasy/fantasy02.jpg" alt=""></td>
+                <td>2023/5/30 10:48</td>
+                <td>華龍之宮</td>
+                <td>
+                    ⭐⭐⭐⭐⭐<br>
+                    這本書超級好看的喔~~
+                </td>
+            </tr>
+            <tr>
+                <td><img src="img/suspense/suspense03.jpg" alt=""></td>
+                <td>2023/5/20 21:17</td>
+                <td>一個都不留</td>
+                <td>
+                    ⭐⭐⭐⭐⭐<br>
+                    喜歡!
+                </td>
+            </tr>
+            <tr>
+                <td><img src="img/fantasy/fantasy05.jpg" alt=""></td>
+                <td>2023/4/1 17:28</td>
+                <td>靈魂穿越手稿</td>
+                <td>
+                    ⭐⭐⭐⭐<br>
+                    好看~但是不是我的菜!
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <footer>
+        Copyright © 2023 all rights reserved<br>
+        瀏覽人數：
+    </footer>
+</body>
+</html>

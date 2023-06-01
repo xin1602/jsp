@@ -1,0 +1,78 @@
+.checkList {
+    width: 80%;
+    min-height: 500px;
+    margin: 20px auto;
+    background-color: rgba(207, 48, 48, 0.3);
+    padding: 10px;
+    border-radius: 30px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    font-size: 18pt;
+    border: 3px solid gray;
+}
+
+tr, td {
+    padding: 5px;
+    text-align: center;
+}
+
+td {
+    max-width: 200px;
+}
+
+.tdimg {
+    width: 50%;
+}
+
+.info {
+    width: 80%;
+    min-height: 500px;
+    margin: 20px auto;
+    background-color: rgba(207, 48, 48, 0.3);
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.purchase {
+    width: 100%;
+    margin: 20px auto;
+    font-size: 18pt;
+}
+
+form {
+    display: block;
+    width: 95%;
+    margin: 30px;
+    padding: 20px 10px;
+}
+
+label, input, button {
+    margin: 5px;
+}
+
+.info input {
+    border:none;
+	border-bottom:4px solid #cf3030;
+	margin-bottom:.75rem;
+	width:80%;
+	font-size:18pt;
+}
+
+select {
+    margin: 0 0 15px 5px;
+}
+
+button {
+    width:30%;
+	padding: 20px;
+	border:none;
+	background:linear-gradient(to top,darkred,lightpink);
+	border-radius:40px;
+	color:#ededed;
+	cursor:pointer;
+    margin: 20px auto;
+    font-size: 16pt;
+}
