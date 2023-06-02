@@ -111,3 +111,7 @@ form.login-form{
 .flipped form.login-form{
 	transform:rotateY(0deg);
 }
+
+a {
+	text-decoration: none;
+}

@@ -91,24 +91,22 @@
             <div class="comment_text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus officia quaerat amet, eum impedit enim nam praesentium architecto dolore sint! Laborum assumenda reprehenderit, quidem cum nostrum eveniet facere autem velit!</div>
         </div>
         <hr>
-        <div class="stars">
-            <input type="radio" name="star" id="star1" hidden />
-            <label for="star1"></label>
-    
-            <input type="radio" name="star" id="star2" hidden />
-            <label for="star2"></label>
-    
-            <input type="radio" name="star" id="star3" hidden />
-            <label for="star3"></label>
-    
-            <input type="radio" name="star" id="star4" hidden />
-            <label for="star4"></label>
-    
-            <input type="radio" name="star" id="star5" hidden />
-            <label for="star5"></label>
+        <div class="sendcmt">
+            <div class="stars">
+                <input type="radio" name="star" id="star1" hidden />
+                <label for="star1"></label>
+                <input type="radio" name="star" id="star2" hidden />
+                <label for="star2"></label>
+                <input type="radio" name="star" id="star3" hidden />
+                <label for="star3"></label>
+                <input type="radio" name="star" id="star4" hidden />
+                <label for="star4"></label>
+                <input type="radio" name="star" id="star5" hidden />
+                <label for="star5"></label>
+            </div>
+            <textarea name="" id="" cols="30" rows="10" class="write" placeholder="留下評論及評分吧！"></textarea>
+            <input type="submit" value="確認" id="send">
         </div>
-        <textarea name="" id="" cols="30" rows="10" class="write" placeholder="留下評論及評分吧！"></textarea>
-        <input type="submit" value="確認" id="send">
     </div>
     <div class="book">
         <p>推薦商品</p>
@@ -131,8 +129,6 @@
             </div>
         </div>
     </div>
-
-    
-
+    <%@ include file="footer.jsp"%>
 </body>
 </html>

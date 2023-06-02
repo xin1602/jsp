@@ -72,7 +72,7 @@
                     產品介紹
                 </td>
                 <td class="m_text">
-                    <textarea name="Introduce" rows="6" cols="55"></textarea>
+                    <textarea name="Introduce" rows="6" cols="50"></textarea>
                 </td>
             </tr>
 
@@ -81,7 +81,7 @@
                     優惠活動
                 </td>
                 <td class="m_text">
-                    <textarea name="Promotions" rows="6" cols="55">活動說明</textarea>
+                    <textarea name="Promotions" rows="6" cols="50">活動說明</textarea>
                 </td>
             </tr>
 

@@ -62,7 +62,7 @@
         <h1>購買表單</h1>
         <hr>
         <div class="purchase">
-            <form action="#">
+            <form action="#" method="post">
                 <label for="name">姓　　名：</label>
                 <input type="text" id="name"><br>
                 <label for="phone">連絡電話：</label>

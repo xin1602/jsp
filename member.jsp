@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barï¼ | æå¡ä¸­å¿</title>
+    <title>Bar！ | 會員中心</title>
     <link rel="icon" type="image" href="img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,85 +14,58 @@
     <link rel="stylesheet" href="css/member.css">
 </head>
 
-<nav>
-    <!--Logo-->
-    <div class="logo"><a href="index.html"><img src="img/logo.png" alt="logo"></a></div>
-    <!--ç¢ååé¡-->
-    <!--åèè³æï¼https://www.astralweb.com.tw/pure-css-drop-down-menu/-->
-    <ul class="product">ç¢ååé¡&equiv;
-        <ul class="dropdown-menu">
-            <li><a href="product.html">ææ</a></li>
-            <li><a href="product.html">ææ</a></li>
-            <li><a href="product.html">æ¸ç</a></li>
-            <li><a href="product.html">ç§å¹»</a></li>
-        </ul>
-    </ul>
-    <!--éæ¼æå-->
-    <div class="aboutus"><a href="about_team.html">éæ¼æå</a></div>
-    <!--æå¡ä¸­å¿-->
-    <div class="mem-center"><a href="member.html">æå¡ä¸­å¿</a></div>
-    <div class="nav_img">
-        <!--æå¡ç»å¥/æå¡è³æ-->
-        <a href="login.html"><img src="img/member.png" alt="member"></a>
-        <!--è³¼ç©è»-->
-        <a href="cart.html"><img src="img/cart.png" alt="cart"></a>
-        
-    </div>
-    <input type="search" id="search" placeholder="Search for something...">
-    <!--æå°-->
-    <input type="image" name="submit_Btn" id="submit_Btn" img src="img/search.png" onClick="" >
-</nav>
+<%@ include file="nav.jsp"%>
 
 <body>
     <div class="sec">
-        <h1>æå¡è³æ</h1>
+        <h1>會員資料</h1>
         <hr>
         <div class="revise">
-            <form action="#">
-                <label for="name">å§å</label>
+            <form action="#" method="post">
+                <label for="name">姓　名：</label>
                 <input type="text" name="member-name" id="name" placeholder="User123"><br>
-                <label for="bday">çæ¥</label>
+                <label for="bday">生　日：</label>
                 <input type="text" name="birth" id="bday" placeholder="2002-11-01"><br>
-                <label for="gender">æ§å¥</label>
-                <input type="text" name="gender" id="gender" value="ç·" readonly><br>
-                <label for="tel">é»è©±</label>
+                <label for="gender">性　別：</label>
+                <input type="text" name="gender" id="gender" value="男" readonly><br>
+                <label for="tel">電　話：</label>
                 <input type="text" name="tel" id="tel" placeholder="0912345678"><br>
-                <label for="city">ç¸£å¸</label>
-                <input type="text" name="city" id="city" placeholder="æ¡åå¸"><br>
-                <label for="city">éé®å</label>
-                <input type="text" name="district" id="district" placeholder="ä¸­å£¢å"><br>
-                <label for="addr">å°å</label>
-                <input type="text" name="addr" id="addr" placeholder="320æ¡åå¸ä¸­å£¢åä¸­åè·¯200è"><br>
-                <label for="email">éµç®±</label>
+                <label for="city">縣　市：</label>
+                <input type="text" name="city" id="city" placeholder="桃園市"><br>
+                <label for="city">鄉鎮區：</label>
+                <input type="text" name="district" id="district" placeholder="中壢區"><br>
+                <label for="addr">地　址：</label>
+                <input type="text" name="addr" id="addr" placeholder="320桃園市中壢區中北路200號"><br>
+                <label for="email">郵　箱：</label>
                 <input type="text" name="member-email" id="email" value="user123@gmail.com" readonly><br>
-                <label for="password">å¯ç¢¼</label>
+                <label for="password">密　碼：</label>
                 <input type="password" name="member-password" id="psw" value="abc123" readonly><br>
-                <input type="button" value="ä¿®æ¹" id="revise_btn" onclick="location.href='#revisee'">
+                <input type="button" value="修改" id="revise_btn" onclick="location.href='#revisee'">
             </form>
         </div>
     </div>
 
     <div class="sec">
-        <h1>è¨å®è¨é</h1>
+        <h1>訂單記錄</h1>
         <hr>
         <table>
             <tr>
-                <td>ç¢ååç</td>
-                <td>ç¢ååç¨±</td>
-                <td>å®å¹</td>
-                <td>æ¸é</td>
-                <td>å°è¨</td>
+                <td>產品圖片</td>
+                <td>產品名稱</td>
+                <td>單價</td>
+                <td>數量</td>
+                <td>小計</td>
             </tr>
             <tr>
                 <td><img src="img/horry/horry01.jpg" alt=""></td>
-                <td>æ¨ä¸çæ¿å®¢</td>
+                <td>樓下的房客</td>
                 <td>$260</td>
                 <td>2</td>
                 <td>$520</td>
             </tr>
             <tr>
                 <td><img src="img/love/love01.jpg" alt=""></td>
-                <td>åæ­¡ä½ çæ¥å­åæµ·</td>
+                <td>喜歡你的日子像海</td>
                 <td>$252</td>
                 <td>1</td>
                 <td>$252</td>
@@ -101,53 +74,52 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>ç¸½è¨ï¼</td>
+                <td>總計：</td>
                 <td>$772</td>
             </tr>
         </table>
     </div>
 
     <div class="sec">
+        <h1>評論紀錄</h1>
+        <hr>
         <table>
             <tr>
-                <td>ç¢ååç</td>
-                <td>æé</td>
-                <td>ç¢ååç¨±</td>
-                <td>è©è«å§å®¹</td>
+                <td>產品圖片</td>
+                <td>時間</td>
+                <td>產品名稱</td>
+                <td>評論內容</td>
             </tr>
             <tr>
                 <td><img src="img/fantasy/fantasy02.jpg" alt=""></td>
                 <td>2023/5/30 10:48</td>
-                <td>è¯é¾ä¹å®®</td>
+                <td>華龍之宮</td>
                 <td>
-                    â­â­â­â­â­<br>
-                    éæ¬æ¸è¶ç´å¥½ççå~~
+                    ⭐⭐⭐⭐⭐<br>
+                    這本書超級好看的喔~~
                 </td>
             </tr>
             <tr>
                 <td><img src="img/suspense/suspense03.jpg" alt=""></td>
                 <td>2023/5/20 21:17</td>
-                <td>ä¸åé½ä¸ç</td>
+                <td>一個都不留</td>
                 <td>
-                    â­â­â­â­â­<br>
-                    åæ­¡!
+                    ⭐⭐⭐⭐⭐<br>
+                    喜歡!
                 </td>
             </tr>
             <tr>
                 <td><img src="img/fantasy/fantasy05.jpg" alt=""></td>
                 <td>2023/4/1 17:28</td>
-                <td>éé­ç©¿è¶æç¨¿</td>
+                <td>靈魂穿越手稿</td>
                 <td>
-                    â­â­â­â­<br>
-                    å¥½ç~ä½æ¯ä¸æ¯æçè!
+                    ⭐⭐⭐⭐<br>
+                    好看~但是不是我的菜!
                 </td>
             </tr>
         </table>
     </div>
     
-    <footer>
-        Copyright Â© 2023 all rights reserved<br>
-        çè¦½äººæ¸ï¼
-    </footer>
+    <%@ include file="footer.jsp"%>
 </body>
 </html>
