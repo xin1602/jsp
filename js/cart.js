@@ -54,9 +54,9 @@ function total() {
 
 //删除
 function delete1() {
-    if (confirm("确认要删除吗？")) {
+    if (confirm("確認要刪除嗎？")) {
         var del=document.getElementById("first");
         del.parentNode.removeChild(del);
-        alert("删除成功！！");
+        alert("刪除成功！！");
     }
 }
