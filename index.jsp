@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,21 +21,15 @@
     <div class="slideshow-container">
 
         <div class="mySlides fade">
-          <div class="numbertext">1 / 3</div>
-          <img src="https://picsum.photos/1000/350" style="width:100%">
-          <div class="text">Caption Text</div>
+          <img src="img/slideshow/1.png" style="width:100%">
         </div>
         
         <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <img src="https://picsum.photos/1000/350" style="width:100%">
-          <div class="text">Caption Two</div>
+          <img src="img/slideshow/2.png" style="width:100%">
         </div>
         
         <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <img src="https://picsum.photos/1000/350" style="width:100%">
-          <div class="text">Caption Three</div>
+          <img src="img/slideshow/3.png" style="width:100%">
         </div>
         
         <a class="prev" onclick="plusSlides(-1)">❮</a>

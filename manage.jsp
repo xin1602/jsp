@@ -24,25 +24,25 @@
     <table class="manage">
         <tr>
             <td class="manage_text">
-               <a href="m_shelves.html" target="_blank">產品上架</a> 
+               <a href="m_shelves.html">產品上架</a> 
             </td>
         </tr>
 
         <tr>
             <td class="manage_text">
-               <a href="m_edit.html" target="_blank">產品查詢&變更</a>
+               <a href="m_edit.html">產品查詢&變更</a>
             </td>
         </tr>
 
         <tr>
             <td class="manage_text">
-               <a href="m_sales.html" target="_blank">銷貨紀錄</a>
+               <a href="m_sales.html">銷貨紀錄</a>
             </td>
         </tr>
 
         <tr>
             <td class="manage_text">
-               <a href="m_analyze.html" target="_blank">瀏覽者點閱行為分析</a>
+               <a href="m_analyze.html">瀏覽者點閱行為分析</a>
             </td>
         </tr>
     </table>
