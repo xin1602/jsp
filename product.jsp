@@ -44,38 +44,34 @@
 </nav>
 
 <body>
-    <h1><u>奇幻</u></h1>
+    <h1><u>科幻</u></h1>
     <table>
-    <%  	
-    try {
-//Step 1: 載入資料庫驅動程式 
-        	Class.forName("com.mysql.jdbc.Driver");	  
-        try {
-//Step 2: 建立連線 
-        	String url="jdbc:mysql://localhost/?serverTimezone=UTC"; 
-            String sql="";
-            Connection con=DriverManager.getConnection(url,"jsp","opo77990");   		
-//Step 5: 顯示結果 				
-		   if(con.isClosed())
-              out.println("連線建立失敗");
-           else
-             sql="use `bookstore`";
-             con.createStatement().execute(sql);
-             sql="select `product_name` from `products` where `category` = '恐怖'";
-//Step 6: 關閉連線
-              con.close();
-        }            
-        catch (SQLException sExec) {
-           out.println("SQL錯誤!" + sExec.toString());
-        }
-    }       
-    catch (ClassNotFoundException err) {
-          out.println("class錯誤" + err.toString());
-    }    
-%>      
+    <%@ include file="setsql.jsp"%>
+    <% 
+            sql="select count(*) from `products` where `category` = '科幻'";
+            ResultSet rs=con.createStatement().executeQuery(sql);
+            int n=rs.nextInt(1);
+            sql="select count(*) from `products` where `category` = '科幻'";
+            ResultSet rs=con.createStatement().executeQuery(sql);
+            while(rs.next()){
+                for(int i=0;i<=n;i++){
+                    if(i%4==1){
+                        out.print("<tr>");
+                        out.print("<td><a href="book.html?number=<%=rs.getString(1)%>"><img src="img/<%=rs.getString(9)%>" alt="<%=rs.getString(3)%>"></a></td>");
+                    }
+                    elif(i%4==2 || i%4==3){
+                        out.print("<td><a href="book.html?number=<%=rs.getString(1)%>"><img src="img/<%=rs.getString(9)%>" alt="<%=rs.getString(3)%>"></a></td>");
+                    }
+                    else{
+                        out.print("<td><a href="book.html?number=<%=rs.getString(1)%>"><img src="img/<%=rs.getString(9)%>" alt="<%=rs.getString(3)%>"></a></td>");
+                        out.print("</tr>");
+                    }
+                }
+            }
+    %>      
     
         <tr>
-            <td><a href="book.html"><img src="img/fantasy/fantasy01.jpg" alt=""></a></td>
+            
             <td><a href="book.html"><img src="img/fantasy/fantasy02.jpg" alt=""></a></td>
             <td><a href="book.html"><img src="img/fantasy/fantasy03.jpg" alt=""></a></td>
             <td><a href="book.html"><img src="img/fantasy/fantasy04.jpg" alt=""></a></td>
