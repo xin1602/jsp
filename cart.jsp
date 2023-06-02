@@ -20,8 +20,8 @@
 
 <!--onload，在加载时计算好原始金额-->
 <body onload="total()">
-    <p class="cart_p">My Cart</p>
     <div class="content_cart">
+        <p class="cart_p">My Cart</p>
         <div class="cartList">
             <ul>
                 <li>商品圖</li>
@@ -68,10 +68,10 @@
             </ol>
         </div>
     </div>
-        <!--footer-->
-        <%@ include file="footer.jsp"%>
+    <!--footer-->
+    <%@ include file="footer.jsp"%>
 
-        <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 
     
 </body>
