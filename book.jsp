@@ -31,10 +31,19 @@
 <%@ include file="nav.jsp"%>
 
 <body>
+    <%@ include file="setsql.jsp"%>
+    <!-- 讀取products.jsp超連結的parameter以方便設定product_id -->
+    <%
+        String number=request.getParameter("number");
+        session.setAttribute("number",number);
+        sql="select * from `products` where `product_id`= +'number'";
+        ResultSet rs=con.createStatement().executeQuery(sql);
+        rs.next();
+    %>
     <div class="array1">
         <div class="array2">
             <div class="img">
-                <img src="img/fantasy/fantasy03.jpg" >
+                <img src="img/<%=rs.getString(9)" >
             </div>
             <div class="c">
                 <div class="area"><h1><b>魔法道具博物館</b></h1></div>
@@ -139,7 +148,7 @@
         </div>
     </div>
 
-    <%@ include file="footer.jsp"%>
+    
 
 </body>
 </html>
