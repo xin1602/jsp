@@ -43,7 +43,7 @@
     <div class="array1">
         <div class="array2">
             <div class="img">
-                <img src="img/<%=rs.getString(9)" >
+                <img src="img/<%=rs.getString(9)%>" >
             </div>
             <div class="c">
                 <div class="area"><h1><b><%= rs.getString(3) %></b></h1></div>
