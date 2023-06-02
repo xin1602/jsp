@@ -8,10 +8,16 @@
     font-size: 16pt;
 }
 
+hr {
+    width: 95%;
+    margin: auto;
+}
+
 .revise {
     width: 80%;
     margin: 20px auto;
     font-size: 18pt;
+    text-align: center;
 }
 
 form {
@@ -28,18 +34,20 @@ label {
 }
 
 form input {
-    border:none;
-	border-bottom:1px solid #cf3030;
-	width:80%;
+    border: none;
+    border-bottom: 1px solid #cf3030;
+    width: 80%;
     height: 30px;
 }
 
 #revise_btn {
-    width: 88%;
+    width: 93%;
     height: 40px;
     margin: 20px;
     border-bottom: none;
+    border-radius: 40px;
     font-size: 18pt;
+    background: linear-gradient(to top, darkred, lightpink);
 }
 
 table {
@@ -49,7 +57,8 @@ table {
     margin: 20px auto;
 }
 
-tr, td {
+tr,
+td {
     padding: 15px;
 }
 

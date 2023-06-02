@@ -35,28 +35,30 @@ body {
     color: #EDEDED;
 }
 
-.manage{
+.manage {
     width: 500px;
     height: 500px;
-    border-style:solid;
+    border-style: solid;
     text-align: center;
-    margin: 50px 500px;
+    margin: 100px auto;
 }
 
-.manage_text{
+.manage_text {
     border-style: solid;
     font-size: 15pt;
 
 }
 
-.manage_text:hover{
-    color:orange;
+.manage_text:hover {
+    color: orange;
 }
 
-a,a:link{
+a,
+a:link {
     color: #EDEDED;
-    text-decoration:none
+    text-decoration: none
 }
-a:hover{
-    text-decoration:none 
+
+a:hover {
+    text-decoration: none
 }

@@ -47,6 +47,7 @@ form {
     width: 95%;
     margin: 30px;
     padding: 20px 10px;
+    text-align: center;
 }
 
 label, input, button {
@@ -62,12 +63,13 @@ label, input, button {
 }
 
 select {
+    text-align: left;
     margin: 0 0 15px 5px;
 }
 
 button {
     width:30%;
-	padding: 20px;
+	padding: 10px;
 	border:none;
 	background:linear-gradient(to top,darkred,lightpink);
 	border-radius:40px;

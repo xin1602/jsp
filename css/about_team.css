@@ -1,4 +1,4 @@
-h1{
+h1 {
     text-align: center;
     margin: 50px 0 0 0;
 }
@@ -50,7 +50,7 @@ h1{
 }
 
 /*品牌介紹*/
-.brand_introduction{
+.brand_introduction {
     width: 1000px;
     height: 500px;
     background: grey;
@@ -58,27 +58,25 @@ h1{
     border-radius: 1rem;
 }
 
-.brand_text{
+.brand_text {
     font-size: 32pt;
     font-weight: bold;
     text-align: center;
-    padding: 30px;    
+    padding: 20px;
 }
 
-hr{
+hr {
     margin: 0 50px;
 }
 
-.brand_text2{
+.brand_text2 {
     font-size: 20px;
     margin: 10px 50px;
-    line-height: 1.5;
+    line-height: 2;
 }
 
 /*地圖*/
-.map{
+.map {
 
-    margin: 0 260px;
+    text-align: center;
 }
-
-
