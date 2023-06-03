@@ -18,6 +18,58 @@ USE `bookstore`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cart` (
+  `member_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int DEFAULT NULL,
+  `price` int DEFAULT NULL,
+  `order_no` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`member_id`,`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart`
+--
+
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `click`
+--
+
+DROP TABLE IF EXISTS `click`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `click` (
+  `member_id` int NOT NULL,
+  `horry_count` int DEFAULT '0',
+  `love_count` int DEFAULT '0',
+  `suspense_count` int DEFAULT '0',
+  `fantasy_count` int DEFAULT '0',
+  PRIMARY KEY (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `click`
+--
+
+LOCK TABLES `click` WRITE;
+/*!40000 ALTER TABLE `click` DISABLE KEYS */;
+/*!40000 ALTER TABLE `click` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `members`
 --
 
@@ -26,19 +78,19 @@ DROP TABLE IF EXISTS `members`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `members` (
   `member_id` int NOT NULL AUTO_INCREMENT,
-  `member_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_number` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `district` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `member_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_number` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `district` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birthday` date DEFAULT NULL,
   `registration_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`member_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,8 +99,40 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (1,'管理員','admin@com','admin','male','0912345678','桃園市','中壢區','中北路200號','1990-01-01','2023-06-03 04:59:22'),(2,'李欣樺','11044106@cycu.edu.tw','11044106','female','0912345678','桃園市','中壢區','中北路200號','2002-11-01','2023-06-03 04:59:22'),(3,'辜麗慈','11044114@cycu.edu.tw','11044114','female','0912345678','桃園市','中壢區','中北路200號','2003-02-01','2023-06-03 04:59:22'),(4,'陳威宏','11044144@cycu.edu.tw','11044144','male','0912345678','桃園市','中壢區','中北路200號','2002-09-28','2023-06-03 04:59:22'),(5,'許恬綺','11044218@cycu.edu.tw','11044218','female','0912345678','桃園市','中壢區','中北路200號','2002-11-01','2023-06-03 04:59:22'),(6,'黃雅芳','11044240@cycu.edu.tw','11044240','female','0912345678','桃園市','中壢區','中北路200號','2003-02-01','2023-06-03 04:59:22'),(7,'陳亮竹','11044245@cycu.edu.tw','11044245','female','0912345678','桃園市','中壢區','中北路200號','2002-09-28','2023-06-03 04:59:22');
+INSERT INTO `members` VALUES (1,'管理員','admin@com','admin','男','0912345678','桃園市','中壢區','中北路200號','1990-01-01','2023-06-03 04:59:22'),(2,'李欣樺','11044106@cycu.edu.tw','11044106','女','0912345678','桃園市','中壢區','中北路200號','2002-11-01','2023-06-03 04:59:22'),(3,'辜麗慈','11044114@cycu.edu.tw','11044114','女','0912345678','桃園市','中壢區','中北路200號','2003-02-01','2023-06-03 04:59:22'),(4,'陳威宏','11044144@cycu.edu.tw','11044144','男','0912345678','桃園市','中壢區','中北路200號','2002-09-28','2023-06-03 04:59:22'),(5,'許恬綺','11044218@cycu.edu.tw','11044218','女','0912345678','桃園市','中壢區','中北路200號','2002-11-01','2023-06-03 04:59:22'),(6,'黃雅芳','11044240@cycu.edu.tw','11044240','女','0912345678','桃園市','中壢區','中北路200號','2003-02-01','2023-06-03 04:59:22'),(7,'陳亮竹','11044245@cycu.edu.tw','11044245','女','0912345678','桃園市','中壢區','中北路200號','2002-09-28','2023-06-03 04:59:22');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order` (
+  `order_no` varchar(20) NOT NULL,
+  `member_id` int DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `status` varchar(20) DEFAULT '待出貨',
+  `recipient_name` varchar(100) DEFAULT NULL,
+  `recipient_phome_number` varchar(10) DEFAULT NULL,
+  `recipient_address` varchar(100) DEFAULT NULL,
+  `payment` varchar(20) DEFAULT NULL,
+  `sub_total` int DEFAULT NULL,
+  `discount` int DEFAULT NULL,
+  `total` int DEFAULT NULL,
+  PRIMARY KEY (`order_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -60,15 +144,15 @@ DROP TABLE IF EXISTS `products`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
   `product_id` int NOT NULL AUTO_INCREMENT,
-  `category` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `product_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `author` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `publishing_house` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publishing_house` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `publishing_date` date DEFAULT NULL,
   `price` int DEFAULT NULL,
-  `info` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `img` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ISBN` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `info` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ISBN` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `stock` int DEFAULT NULL,
   `sale` int DEFAULT NULL,
   PRIMARY KEY (`product_id`)
@@ -94,4 +178,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-03 13:09:09
+-- Dump completed on 2023-06-03 15:32:50
