@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% boolean loggedIn = (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,7 @@
 	  session.removeAttribute("error");
 	%>
 
-    <div class="container">
+    <div class="container <%= loggedIn ? "" : " flipped" %>">
 	<form action="register_process.jsp" class="signup-form" method="post">
 	  <h2 class="form-heading">註冊</h2>
 	  <label for="account">會員姓名</label>

@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
 <%@ include file = "setsql.jsp" %>
  <%
-    if (!loggedIn) {
+ if (!loggedIn) {
    // 未登入，導向登入頁面
    response.sendRedirect("login.jsp");
  } else {
-     String userEmail = (String) session.getAttribute("userEmail");
-  try {
+    String userEmail = (String) session.getAttribute("userEmail");
+    try {
     // 查詢目前使用者的資料
     String query = "SELECT * FROM members WHERE email = ?";
     stmt = con.prepareStatement(query);
@@ -25,7 +24,7 @@
     	String address = rs.getString("address");
     	String birthday = rs.getString("birthday");
     	%>
-     	<div class="sec">
+     <div class="sec">
         <h1>會員資料</h1>
         <hr>
         <div class="revise">
