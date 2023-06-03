@@ -2,7 +2,7 @@
 <%@ page import="java.sql.*" %>
 
 <%
-  String username = request.getParameter("username");
+  String email = request.getParameter("email");
   String password = request.getParameter("password");
 
   Connection conn = null;
@@ -18,17 +18,16 @@
     // 檢查帳號密碼是否正確
     String query = "SELECT * FROM members WHERE email = ? AND password = ?";
     stmt = conn.prepareStatement(query);
-    stmt.setString(1, username);
+    stmt.setString(1, email);
     stmt.setString(2, password);
     ResultSet rs = stmt.executeQuery();
 
     if (rs.next()) {
       // 登入成功，設定 session 變數
       String memberName = rs.getString("member_name");
-      String memberEmail = rs.getString("email");
       session.setAttribute("loggedIn", true);
       session.setAttribute("username", memberName);
-      session.setAttribute("userEmail", memberEmail);
+      session.setAttribute("userEmail", email);
 
       // 導向首頁
       response.sendRedirect("index.jsp");

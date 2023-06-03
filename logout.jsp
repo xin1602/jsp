@@ -11,4 +11,5 @@
   }
   // 重導向回首頁
   response.sendRedirect("index.jsp");
+  out.print("<script>alert('您已登出，回首頁！'); window.location='index.jsp';</script>");
 %>
