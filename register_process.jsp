@@ -27,7 +27,7 @@
     if (rs.next()) {
       // 帳號已存在，返回註冊頁面 error=duplicate
     	request.getSession().setAttribute("error", "duplicate");
-    	response.sendRedirect("login.jsp?error=database");
+    	response.sendRedirect("login.jsp?error=duplicate");
     } else {
       // 帳號不存在，進行註冊
       String insertQuery = "INSERT INTO members (member_name, email, password, gender, phone_number, city, district, address, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";

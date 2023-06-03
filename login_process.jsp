@@ -21,7 +21,11 @@
       session.setAttribute("userEmail", email);
 
       // 導向首頁
-      response.sendRedirect("index.jsp");
+      if (memberName.equals("管理員")) {
+    	  response.sendRedirect("manage.jsp");
+      } else {
+	      response.sendRedirect("index.jsp");	  
+      }
     } else {
       // 登入失敗，返回登入頁面
       request.getSession().setAttribute("error", "invalid");

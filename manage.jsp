@@ -15,10 +15,10 @@
 
 <nav>
     <!--Logo-->
-    <div class="logo"><a href="manage.html"><img src="img/logo.png" alt="logo"></a></div>
+    <div class="logo"><a href="manage.jsp"><img src="img/logo.png" alt="logo"></a></div>
  
     <!--會員登入/會員資料-->
-    <div class="member"><a href="index.html"><img src="img/member.png" alt="member"></a></div>
+    <div class="member"><a href="index.jsp"><img src="img/member.png" alt="member"></a></div>
 </nav>
 <body>
     <table class="manage">
