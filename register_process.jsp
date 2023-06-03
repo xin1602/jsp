@@ -38,8 +38,7 @@
     if (rs.next()) {
       // 帳號已存在，返回註冊頁面 error=duplicate
     	request.getSession().setAttribute("error", "duplicate");
-    	response.sendRedirect("login.jsp");
-
+    	out.print("<script>alert('您已經註冊過了，進行登入！'); window.location='login.jsp'</script>");
     } else {
       // 帳號不存在，進行註冊
       String insertQuery = "INSERT INTO members (member_name, email, password, gender, phone_number, city, district, address, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
