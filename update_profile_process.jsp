@@ -8,7 +8,7 @@
   String password = request.getParameter("password");
   String gender = request.getParameter("gender");
   String phoneNumber = request.getParameter("phoneNumber");
-  String county = request.getParameter("county");
+  String city = request.getParameter("city");
   String district = request.getParameter("district");
   String address = request.getParameter("address");
   String birthday = request.getParameter("birthday");
@@ -36,7 +36,7 @@
 
     if (rs.next()) {
     	int memberID = rs.getInt("member_id");
-		String updateQuery = "UPDATE members SET member_name = ?, email = ?, password = ?, gender = ?, phone_number = ?, county = ?, district = ?, address = ?, birthday = ? WHERE member_id = ?";
+		String updateQuery = "UPDATE members SET member_name = ?, email = ?, password = ?, gender = ?, phone_number = ?, city = ?, district = ?, address = ?, birthday = ? WHERE member_id = ?";
 			
 		stmt = conn.prepareStatement(updateQuery);
 		
@@ -45,7 +45,7 @@
 		stmt.setString(3, password);
 		stmt.setString(4, gender);
 		stmt.setString(5, phoneNumber);
-		stmt.setString(6, county);
+		stmt.setString(6, city);
 		stmt.setString(7, district);
 		stmt.setString(8, address);
 		stmt.setString(9, birthday);
@@ -55,9 +55,7 @@
 
 
       // 修改成功，導向首頁並取得更新後資料
-      memberName = rs.getString("member_name");
       String memberEmail = rs.getString("email");
-      session.setAttribute("username", memberName);
       session.setAttribute("userEmail", memberEmail);
       response.sendRedirect("index.jsp");
     }

@@ -9,7 +9,6 @@
     httpSession.removeAttribute("username");
     httpSession.invalidate(); // 無效化 session
   }
-  // 重導向回首頁
-  response.sendRedirect("index.jsp");
-  out.print("<script>alert('您已登出，回首頁！'); window.location='index.jsp';</script>");
+  // 重導向回首頁並顯示已經登出
+  out.print("<script>alert('您已登出，回首頁！'); window.location='index.jsp'</script>");
 %>

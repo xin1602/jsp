@@ -17,33 +17,29 @@
 <%@ include file="nav.jsp"%>
 
 <body>
-    <div class="sec">
-        <h1>會員資料</h1>
-        <hr>
-        <div class="revise">
-            <form action="#" method="post">
-                <label for="name">姓　名：</label>
-                <input type="text" name="member-name" id="name" placeholder="User123"><br>
-                <label for="bday">生　日：</label>
-                <input type="text" name="birth" id="bday" placeholder="2002-11-01"><br>
-                <label for="gender">性　別：</label>
-                <input type="text" name="gender" id="gender" value="男" readonly><br>
-                <label for="tel">電　話：</label>
-                <input type="text" name="tel" id="tel" placeholder="0912345678"><br>
-                <label for="city">縣　市：</label>
-                <input type="text" name="city" id="city" placeholder="桃園市"><br>
-                <label for="city">鄉鎮區：</label>
-                <input type="text" name="district" id="district" placeholder="中壢區"><br>
-                <label for="addr">地　址：</label>
-                <input type="text" name="addr" id="addr" placeholder="320桃園市中壢區中北路200號"><br>
-                <label for="email">郵　箱：</label>
-                <input type="text" name="member-email" id="email" value="user123@gmail.com" readonly><br>
-                <label for="password">密　碼：</label>
-                <input type="password" name="member-password" id="psw" value="abc123" readonly><br>
-                <input type="button" value="修改" id="revise_btn" onclick="location.href='#revisee'">
-            </form>
-        </div>
-    </div>
+	<%
+	  // 回報 error message
+	  String error = (String) session.getAttribute("error");
+	    if (error != null) {
+	      if (error.equals("invalid")) {
+		  %>
+	        <script>
+	            alert("無效的輸入。請確保填寫必填欄位。");
+	        </script>
+		  <% } else { %>
+	        <script>
+	            alert("發生錯誤。請稍後再試。");
+	        </script>
+		<% }
+	  }
+	  session.removeAttribute("error");
+	%>
+
+	<%
+		// 有登入的話才會呈現會員資料/評價等等
+		if(loggedIn) {
+	%>
+	<%@ include file="update_profile_data.jsp"%>
 
     <div class="sec">
         <h1>訂單記錄</h1>
@@ -119,7 +115,12 @@
             </tr>
         </table>
     </div>
-    
+    <%
+ 	 // 有登入的話才會呈現會員資料/評價等等，沒登入就去登入吧~
+     } else {
+    	 out.print("<script>alert('請先登入！'); window.location='login.jsp'</script>");
+   	 } 
+   	%>
     <%@ include file="footer.jsp"%>
 </body>
 </html>

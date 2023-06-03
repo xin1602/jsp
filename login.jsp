@@ -32,23 +32,21 @@
 	%>
 
     <div class="container">
-		<form action="rigister_process.jsp" class="signup-form">
-			<h2 class="form-heading">註冊</h2>
-			<label for="account">帳號</label>
-      <input type="text" name="registeracc" id="registeracc" required>
+	<form action="register_process.jsp" class="signup-form">
+	  <h2 class="form-heading">註冊</h2>
+	  <label for="account">會員姓名</label>
+      <input type="text" name="memberName" id="name" required>
       <label for="password">密碼</label>
-      <input type="password" name="registerpwd" id="pwd" required>
-      <label for="account">會員姓名</label>
-      <input type="text" name="name" id="name" required>
+      <input type="password" name="password" id="pwd" required>
       <label for="account">性別</label>
-      <input type="radio" name="sex" value="男" id="male" checked><span class="radiotxt">男</span>
-      <input type="radio" name="sex" value="女" id="female"><span class="radiotxt">女</span>
+      <input type="radio" name="gender" value="男" id="male" checked><span class="radiotxt">男</span>
+      <input type="radio" name="gender" value="女" id="female"><span class="radiotxt">女</span>
       <label for="account">生日</label>
-      <input type="date" name="bday" id="bday" required>
+      <input type="date" name="birthday" id="bday" required>
       <label for="account">電子郵箱</label>
       <input type="email" name="email" id="email" required>
       <label for="account">電話號碼</label>
-      <input type="tel" name="phone" id="phone" required>
+      <input type="tel" name="phoneNumber" id="phone" required>
       <label for="account">縣市</label>
       <select name="city" id="city">
           <option value="臺北市">臺北市</option>
@@ -77,7 +75,7 @@
       <label for="account">鄉鎮區</label>
       <input type="text" name="district" id="district" required>
       <label for="account">詳細地址</label>
-      <input type="text" name="addr" id="addr" required>
+      <input type="text" name="address" id="addr" required>
 			<button type="submit" id="signup">註冊</button>
 			<button type="button" id="login-toggle">去登入</button>
 		</form>

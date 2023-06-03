@@ -1,9 +1,9 @@
-DROP DATABASE IF EXISTS bookstore;
+-- DROP DATABASE IF EXISTS bookstore;
 
-CREATE DATABASE bookstore CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- CREATE DATABASE bookstore CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE bookstore;
-
+DROP TABLE IF EXISTS members;
 CREATE TABLE members (
   member_id INT PRIMARY KEY AUTO_INCREMENT, -- 會員ID，主鍵，自動遞增
   member_name VARCHAR(100) NOT NULL, -- 會員姓名，不可為空值
@@ -11,13 +11,13 @@ CREATE TABLE members (
   password VARCHAR(50) NOT NULL, -- 密碼，不可為空值，作為登入密碼使用
   gender VARCHAR(6) NOT NULL, -- 性別，包含男生、女生、其他
   phone_number VARCHAR(10), -- 電話號碼
-  county VARCHAR(10), -- 縣市區
+  city VARCHAR(10), -- 縣市區
   district VARCHAR(10), -- 鄉鎮市區
   address VARCHAR(100), -- 詳細地址
   birthday DATE, -- 生日
   registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 註冊日期，預設為目前時間
 );
-INSERT INTO members (member_name, email, password, gender, phone_number, county, district, address, birthday)
+INSERT INTO members (member_name, email, password, gender, phone_number, city, district, address, birthday)
 VALUES
   ('管理員', 'admin@com', 'admin', 'male',  '0912345678', '桃園市', '中壢區', '中北路200號', '1990-01-01'),
   ('李欣樺', '11044106@cycu.edu.tw', '11044106', 'female',  '0912345678', '桃園市', '中壢區', '中北路200號', '2002-11-01'),

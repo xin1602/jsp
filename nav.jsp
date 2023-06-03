@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<% boolean loggedIn = (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")); %>
 <nav>
     <!--Logo-->
     <div class="logo"><a href="index.jsp"><img src="img/logo.png" alt="logo"></a></div>
@@ -19,7 +19,14 @@
     <div class="mem-center"><a href="member.jsp">會員中心</a></div>
     <div class="nav_img">
         <!--會員登入/會員資料-->
-        <a href="login.jsp"><img src="img/member.png" alt="member"></a>
+      <%
+    	// 登入後把link改登出
+    	if (loggedIn) {
+    		out.print("<a onclick = 'logoutCheck()'><img src='img/member.png' alt='member'></a>");
+    	} else {
+    		out.print("<a href = 'login.jsp'><img src='img/member.png' alt='member'></a>");
+    	}
+      %>
         <!--購物車-->
         <a href="cart.jsp"><img src="img/cart.png" alt="cart"></a>
         
@@ -28,3 +35,12 @@
     <!--搜尋-->
     <input type="image" name="submit_Btn" id="submit_Btn" img src="img/search.png" onClick="" >
 </nav>
+<!-- 處理登出的部分 -->
+<script>
+  function logoutCheck() {
+    let check = "確定要登出嗎？";
+    if (confirm(check) === true) {
+      window.location.href = "logout.jsp";
+    }
+  }
+</script>

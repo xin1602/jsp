@@ -8,7 +8,7 @@
   String password = request.getParameter("password");
   String gender = request.getParameter("gender");
   String phoneNumber = request.getParameter("phoneNumber");
-  String county = request.getParameter("county");
+  String city = request.getParameter("city");
   String district = request.getParameter("district");
   String address = request.getParameter("address");
   String birthday = request.getParameter("birthday");
@@ -16,7 +16,7 @@
   // 驗證表單欄位
   if (memberName == null || email == null || password == null || memberName.isEmpty() || email.isEmpty() || password.isEmpty()) {
 	request.getSession().setAttribute("error", "invalid");
-    response.sendRedirect("register.jsp?error=invalid");
+    response.sendRedirect("login.jsp?error=invalid");
   }
 
   Connection conn = null;
@@ -38,11 +38,11 @@
     if (rs.next()) {
       // 帳號已存在，返回註冊頁面 error=duplicate
     	request.getSession().setAttribute("error", "duplicate");
-    	response.sendRedirect("register.jsp");
+    	response.sendRedirect("login.jsp");
 
     } else {
       // 帳號不存在，進行註冊
-      String insertQuery = "INSERT INTO members (member_name, email, password, gender, phone_number, county, district, address, birthday, registration_date = CURRENT_TIMESTAMP) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      String insertQuery = "INSERT INTO members (member_name, email, password, gender, phone_number, city, district, address, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	  stmt = conn.prepareStatement(insertQuery.toString());
 
@@ -51,7 +51,7 @@
 	  stmt.setString(3, password);
 	  stmt.setString(4, gender);
 	  stmt.setString(5, phoneNumber);
-	  stmt.setString(6, county);
+	  stmt.setString(6, city);
 	  stmt.setString(7, district);
 	  stmt.setString(8, address);
 	  stmt.setString(9, birthday);
@@ -65,12 +65,12 @@
     e.printStackTrace();
     // 處理資料庫錯誤，返回註冊頁面  error=database
     request.getSession().setAttribute("error", "database");
-    response.sendRedirect("register.jsp?error=database");
+    response.sendRedirect("login.jsp?error=database");
   } catch (Exception e) {
     e.printStackTrace();
     // 處理其他例外情況，返回註冊頁面  error=unknown
     request.getSession().setAttribute("error", "unknown");
-    response.sendRedirect("register.jsp?error=unknown");
+    response.sendRedirect("login.jsp?error=unknown");
   } finally {
     // 關閉資源
     if (stmt != null) {
