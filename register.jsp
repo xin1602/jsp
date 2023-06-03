@@ -11,6 +11,8 @@
 	  if (error != null) {
 	    if (error.equals("invalid")) {
 	      out.println("<p class='error'>無效的帳號或密碼。</p>");
+	    }  else if (error == "duplicate") {
+	    	out.println("<p class='error'>已經有重複的帳號了！</p>");
 	    } else {
 		  out.println("<p class='error'>發生錯誤。請稍後再試。</p>");
 		}
