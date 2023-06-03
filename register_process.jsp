@@ -23,7 +23,7 @@
     String checkQuery = "SELECT * FROM members WHERE email = ?";
     stmt = con.prepareStatement(checkQuery);
     stmt.setString(1, email);
-    ResultSet rs = stmt.executeQuery();
+    rs = stmt.executeQuery();
 
     if (rs.next()) {
       // 帳號已存在，返回註冊頁面 error=duplicate

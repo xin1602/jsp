@@ -11,7 +11,7 @@
     stmt = con.prepareStatement(query);
     stmt.setString(1, email);
     stmt.setString(2, password);
-    ResultSet rs = stmt.executeQuery();
+    rs = stmt.executeQuery();
 
     if (rs.next()) {
       // 登入成功，設定 session 變數

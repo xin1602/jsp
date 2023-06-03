@@ -22,7 +22,7 @@
     String checkQuery = "SELECT * FROM members WHERE email = ?";
     stmt = con.prepareStatement(checkQuery);
     stmt.setString(1, email);
-    ResultSet rs = stmt.executeQuery();
+    rs = stmt.executeQuery();
 
     if (rs.next()) {
     	int memberID = rs.getInt("member_id");

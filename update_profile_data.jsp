@@ -1,24 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ include file = "setsql.jsp" %>
  <%
     if (!loggedIn) {
    // 未登入，導向登入頁面
    response.sendRedirect("login.jsp");
  } else {
      String userEmail = (String) session.getAttribute("userEmail");
-  Connection conn = null;
-  PreparedStatement stmt = null;
-  ResultSet rs = null;
   try {
-    // 建立資料庫連線
-    String dburl = "jdbc:mysql://localhost:3306/bookstore";
-    String dbusername = "root";
-    String dbpassword = "1234";
-    conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
-
     // 查詢目前使用者的資料
     String query = "SELECT * FROM members WHERE email = ?";
-    stmt = conn.prepareStatement(query);
+    stmt = con.prepareStatement(query);
     stmt.setString(1, userEmail);
     rs = stmt.executeQuery();
 
@@ -81,9 +73,9 @@
         e.printStackTrace();
       }
     }
-    if (conn != null) {
+    if (con != null) {
       try {
-        conn.close();
+        con.close();
       } catch (SQLException e) {
         e.printStackTrace();
       }
