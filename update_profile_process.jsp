@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-
+<%@ include file = "setsql.jsp" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String memberName = request.getParameter("memberName");
@@ -18,17 +18,7 @@
 	request.getSession().setAttribute("error", "invalid");
     response.sendRedirect("update_profile_data.jsp?error=invalid");
   }
-
-  Connection con = null;
-  PreparedStatement stmt = null;
-
   try {
-    // 建立資料庫連線
-    String dburl = "jdbc:mysql://localhost:3306/bookstore?useUnicode=true&characterEncoding=UTF-8";
-    String dbusername = "root";
-    String dbpassword = "1234";
-    con = DriverManager.getConnection(dburl, dbusername, dbpassword);
-
     String checkQuery = "SELECT * FROM members WHERE email = ?";
     stmt = con.prepareStatement(checkQuery);
     stmt.setString(1, email);
