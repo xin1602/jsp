@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>註冊</h1>
-     <%-- // 正式
+     <% // 正式
 	  String error = (String) session.getAttribute("error");
 	  if (error != null) {
 	    if (error.equals("invalid")) {
@@ -14,21 +14,6 @@
 	    } else {
 		  out.println("<p class='error'>發生錯誤。請稍後再試。</p>");
 		}
-	  }
-	  session.removeAttribute("error");
-	--%>
-	<% //測試
-	  String error = (String) session.getAttribute("error");
-	  if (error != null) {
-	    if (error.equals("invalid")) {
-	      out.println("<p class='error'>無效的輸入。請確保填寫必填欄位。</p>");
-	    } else if (error.equals("duplicate")) {
-		  out.println("<p class='error'>已經有重複的帳號申請。</p>");
-		} else if (error.equals("database")) {
-	      out.println("<p class='error'>資料庫錯誤。請稍後再試。</p>");
-	    } else if (error.equals("unknown")) {
-	      out.println("<p class='error'>發生未知錯誤。請稍後再試。</p>");
-	    }
 	  }
 	  session.removeAttribute("error");
 	%>

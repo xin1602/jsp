@@ -59,7 +59,7 @@
       stmt.executeUpdate();
 
       // 註冊成功，導向登入頁面
-      response.sendRedirect("login.jsp");
+      out.print("<script>alert('您已註冊成功，進行登入！'); window.location='login.jsp'</script>");
     }
   } catch (SQLException e) {
     e.printStackTrace();
