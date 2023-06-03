@@ -8,7 +8,7 @@
   try {
     // 檢查帳號密碼是否正確
     String query = "SELECT * FROM members WHERE email = ? AND password = ?";
-    stmt = conn.prepareStatement(query);
+    stmt = con.prepareStatement(query);
     stmt.setString(1, email);
     stmt.setString(2, password);
     ResultSet rs = stmt.executeQuery();
@@ -16,6 +16,7 @@
     if (rs.next()) {
       // 登入成功，設定 session 變數
       String memberName = rs.getString("member_name");
+      session.setAttribute("userId", rs.getString("member_id"));
       session.setAttribute("loggedIn", true);
       session.setAttribute("username", memberName);
       session.setAttribute("userEmail", email);
@@ -46,9 +47,9 @@
         e.printStackTrace();
       }
     }
-    if (conn != null) {
+    if (con != null) {
       try {
-        conn.close();
+        con.close();
       } catch (SQLException e) {
         e.printStackTrace();
       }
