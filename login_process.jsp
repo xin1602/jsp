@@ -1,20 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-
+<%@ include file = "setsql.jsp" %>
 <%
   String email = request.getParameter("email");
   String password = request.getParameter("password");
-
-  Connection conn = null;
-  PreparedStatement stmt = null;
-
+  
   try {
-    // 建立資料庫連線
-    String dburl = "jdbc:mysql://localhost:3306/bookstore?characterEncoding=utf8";
-    String dbusername = "root";
-    String dbpassword = "1234";
-    conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
-
     // 檢查帳號密碼是否正確
     String query = "SELECT * FROM members WHERE email = ? AND password = ?";
     stmt = conn.prepareStatement(query);

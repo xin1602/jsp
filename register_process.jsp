@@ -18,17 +18,7 @@
 	request.getSession().setAttribute("error", "invalid");
     response.sendRedirect("login.jsp?error=invalid");
   }
-
-  Connection conn = null;
-  PreparedStatement stmt = null;
-
   try {
-    // 建立資料庫連線
-    String dburl = "jdbc:mysql://localhost:3306/bookstore?useUnicode=true&characterEncoding=UTF-8";
-    String dbusername = "root";
-    String dbpassword = "1234";
-    conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
-
     // 檢查帳號是否已存在
     String checkQuery = "SELECT * FROM members WHERE email = ?";
     stmt = conn.prepareStatement(checkQuery);
@@ -38,7 +28,7 @@
     if (rs.next()) {
       // 帳號已存在，返回註冊頁面 error=duplicate
     	request.getSession().setAttribute("error", "duplicate");
-    	response.sendRedirect("login.jsp?error=duplicate");
+    	response.sendRedirect("login.jsp?error=database");
     } else {
       // 帳號不存在，進行註冊
       String insertQuery = "INSERT INTO members (member_name, email, password, gender, phone_number, city, district, address, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";

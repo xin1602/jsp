@@ -32,7 +32,7 @@
 	%>
 
     <div class="container">
-	<form action="register_process.jsp" class="signup-form">
+	<form action="register_process.jsp" class="signup-form" method="post">
 	  <h2 class="form-heading">註冊</h2>
 	  <label for="account">會員姓名</label>
       <input type="text" name="memberName" id="name" required>
@@ -79,7 +79,7 @@
 			<button type="submit" id="signup">註冊</button>
 			<button type="button" id="login-toggle">去登入</button>
 		</form>
-		<form action="login_process.jsp" class="login-form">
+		<form action="login_process.jsp" class="login-form" method="post">
 			<h2 class="form-heading">登入</h2>
 			<label for="email">帳號</label>
 			<input type="email" name="email" id="email" placeholder="Account" required>
