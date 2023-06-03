@@ -4,7 +4,7 @@
 
 <%
 	String userId=(String)session.getAttribute("userId");
-    boolean loggedIn=(boolean)session.getAttribute("loggedIn");
+    //boolean loggedIn=(boolean)session.getAttribute("loggedIn");
     //boolean loggedIn = Boolean.parseBoolean((String)session.getAttribute("loggedIn"));
     //boolean loggedInObj = (boolean) session.getAttribute("loggedIn");
     //boolean loggedIn = (loggedInObj != null) ? loggedInObj : false;
@@ -29,10 +29,10 @@
 	rsP.next();
 	int price=Integer.valueOf(rsP.getString("price"));
 
-	if(loggedIn==false){
+	if(session.getAttribute("loggedIn")==null){
 		out.print("<script>alert('請先登入！');window.location='login.jsp' </script>");
 	}
-	else if(loggedIn==true){
+	else if((boolean)session.getAttribute("loggedIn")==true){
 		if(rs.next()){
 			int total_quantity=Integer.valueOf(rs.getString("quantity"))+Integer.valueOf(num);
 			int total_price= price*total_quantity;

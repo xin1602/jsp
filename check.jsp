@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="setsql.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,47 +29,64 @@
                 <td>數量</td>
                 <td>金額</td>
             </tr>
+             <%
+				String userId=(String)session.getAttribute("userId");
+				sql="SELECT * FROM `cart` WHERE `member_id`='"+userId+"' AND order_no is NULL";
+				ResultSet cartlist=con.createStatement().executeQuery(sql);
+				ResultSet cartP;
+                int num=0;
+				int sub_total=0;
+                int discount=0;
+                int total=0;
+
+                String amount[] = request.getParameterValues("amount");
+                int count = amount.length;//總共有幾個
+                for(int i = 0; i < count ; i++){
+                    out.print(amount[i]+"<br>");
+                }
+
+				while(cartlist.next()){
+					sql="SELECT * FROM `products` WHERE `product_id`='"+cartlist.getString("product_id")+ "'";
+					cartP=con.createStatement().executeQuery(sql);
+					cartP.next();
+
+			%>
             <tr>
-                <td><img src="https://picsum.photos/400" class="tdimg"></td>
-                <td>這裡可以放八個字</td>
-                <td>NT$290</td>
-                <td>1</td>
-                <td>NT$290</td>
+                <td><img src="img/<%=cartP.getString("img")%>" class="tdimg"></td>
+                <td><%=cartP.getString("product_name")%></td>
+                <td>NT$<%=cartP.getString("price")%></td>
+                <td><%=amount[num]%></td>
+                <td>NT$<%=cartlist.getString("price")%></td>
             </tr>
-            <tr>
-                <td><img src="https://picsum.photos/400" class="tdimg"></td>
-                <td>《昆虫记》</td>
-                <td>NT$240</td>
-                <td>1</td>
-                <td>NT$240</td>
-            </tr>
-            <tr>
-                <td><img src="https://picsum.photos/400" class="tdimg"></td>
-                <td>一本書</td>
-                <td>NT$300</td>
-                <td>1</td>
-                <td>NT$300</td>
-            </tr>
+
+            <%
+                num++;
+                sub_total+=Integer.valueOf(cartlist.getString("price"));
+                discount=(int)Math.floor(sub_total*0.1);
+                total=sub_total-discount;
+                }
+             %>
+
             <tr>
                 <td>小計：</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>NT$830</td>
+                <td>NT$<%=sub_total%></td>
             </tr>
             <tr>
                 <td>優惠：</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>NT$83</td>
+                <td>-NT$<%=discount%></td>
             </tr>
             <tr>
                 <td>總計：</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>NT$747</td>
+                <td>NT$<%=total%></td>
             </tr>
         </table>
     </div>

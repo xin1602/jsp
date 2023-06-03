@@ -9,6 +9,9 @@
     httpSession.removeAttribute("loggedIn");
     httpSession.removeAttribute("username");
     httpSession.removeAttribute("userEmail");
+    httpSession.removeAttribute("sub_total");
+    httpSession.removeAttribute("discount");
+    httpSession.removeAttribute("total");
     httpSession.invalidate(); // 無效化 session
   }
   // 重導向回首頁並顯示已經登出
