@@ -69,7 +69,7 @@
 
             <ol>
                 <li id="totalPrice">&nbsp;</li>
-                <li><a href="check.html"><span>結帳</span></a></li>
+                <li><a href="check.jsp"><span>結帳</span></a></li>
             </ol>
         </div>
     </div>

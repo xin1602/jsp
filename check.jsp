@@ -50,11 +50,25 @@
                 <td>NT$300</td>
             </tr>
             <tr>
-                <td>總計：</td>
+                <td>小計：</td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>NT$830</td>
+            </tr>
+            <tr>
+                <td>優惠：</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>NT$83</td>
+            </tr>
+            <tr>
+                <td>總計：</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>NT$747</td>
             </tr>
         </table>
     </div>

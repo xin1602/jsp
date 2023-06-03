@@ -47,6 +47,7 @@ form input {
     border-bottom: none;
     border-radius: 40px;
     font-size: 18pt;
+    color: #ededed;
     background: linear-gradient(to top, darkred, lightpink);
 }
 
@@ -62,10 +63,11 @@ td {
     padding: 15px;
 }
 
-td:first-child {
-    width: 20%;
+tr:nth-child(1) {
+    background-color: rgba(221, 216, 217, 0.6);
+    margin: 0;
 }
 
 td img {
-    width: 200px;
+    width: 150px;
 }
