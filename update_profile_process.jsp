@@ -19,7 +19,7 @@
     response.sendRedirect("update_profile_data.jsp?error=invalid");
   }
 
-  Connection conn = null;
+  Connection con = null;
   PreparedStatement stmt = null;
 
   try {
@@ -27,10 +27,10 @@
     String dburl = "jdbc:mysql://localhost:3306/bookstore?useUnicode=true&characterEncoding=UTF-8";
     String dbusername = "root";
     String dbpassword = "1234";
-    conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
+    con = DriverManager.getConnection(dburl, dbusername, dbpassword);
 
     String checkQuery = "SELECT * FROM members WHERE email = ?";
-    stmt = conn.prepareStatement(checkQuery);
+    stmt = con.prepareStatement(checkQuery);
     stmt.setString(1, email);
     ResultSet rs = stmt.executeQuery();
 
@@ -38,7 +38,7 @@
     	int memberID = rs.getInt("member_id");
 		String updateQuery = "UPDATE members SET member_name = ?, email = ?, password = ?, gender = ?, phone_number = ?, city = ?, district = ?, address = ?, birthday = ? WHERE member_id = ?";
 			
-		stmt = conn.prepareStatement(updateQuery);
+		stmt = con.prepareStatement(updateQuery);
 		
 		stmt.setString(1, memberName);
 		stmt.setString(2, email);
@@ -76,9 +76,9 @@
         e.printStackTrace();
       }
     }
-    if (conn != null) {
+    if (con != null) {
       try {
-        conn.close();
+        con.close();
       } catch (SQLException e) {
         e.printStackTrace();
       }

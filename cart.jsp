@@ -56,11 +56,16 @@
                 <li><p onclick="delete1()"><img class="garbage" src="img/garbage.png" alt="garbage"></p></li>
             </ul>
 
-            <ul class="discount">
-                <li>優惠：</li>
-                <li>-</li>
+            <ul style="display: flex;justify-content: space-between;align-items: center; margin: 20px 0;">
+                <li class="book_name">小計：</li>
+                <li class="book_name">123456</li>
             </ul>
 
+
+            <ul style="display: flex;justify-content: space-between;align-items: center; margin: 20px 0;">
+                <li class="book_name">優惠：</li>
+                <li class="book_name">456789</li>
+            </ul>
 
             <ol>
                 <li id="totalPrice">&nbsp;</li>

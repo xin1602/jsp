@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-
+<%@ include file = "setsql.jsp" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String memberName = request.getParameter("memberName");
@@ -21,7 +21,7 @@
   try {
     // 檢查帳號是否已存在
     String checkQuery = "SELECT * FROM members WHERE email = ?";
-    stmt = conn.prepareStatement(checkQuery);
+    stmt = con.prepareStatement(checkQuery);
     stmt.setString(1, email);
     ResultSet rs = stmt.executeQuery();
 
@@ -33,7 +33,7 @@
       // 帳號不存在，進行註冊
       String insertQuery = "INSERT INTO members (member_name, email, password, gender, phone_number, city, district, address, birthday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
-	  stmt = conn.prepareStatement(insertQuery.toString());
+	  stmt = con.prepareStatement(insertQuery.toString());
 
 	  stmt.setString(1, memberName);
 	  stmt.setString(2, email);
@@ -69,9 +69,9 @@
         e.printStackTrace();
       }
     }
-    if (conn != null) {
+    if (con != null) {
       try {
-        conn.close();
+        con.close();
       } catch (SQLException e) {
         e.printStackTrace();
       }

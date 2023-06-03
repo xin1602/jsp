@@ -5,8 +5,10 @@
   HttpSession httpSession = request.getSession(false);
   if (httpSession != null) {
     // 移除登入狀態的屬性
+    httpSession.removeAttribute("userId");
     httpSession.removeAttribute("loggedIn");
     httpSession.removeAttribute("username");
+    httpSession.removeAttribute("userEmail");
     httpSession.invalidate(); // 無效化 session
   }
   // 重導向回首頁並顯示已經登出
