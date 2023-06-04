@@ -7,10 +7,10 @@
     <!--參考資料：https://www.astralweb.com.tw/pure-css-drop-down-menu/-->
     <ul class="product">產品分類&equiv;
         <ul class="dropdown-menu">
-            <li><a href="product.jsp">恐怖</a></li>
-            <li><a href="product.jsp">愛情</a></li>
-            <li><a href="product.jsp">懸疑</a></li>
-            <li><a href="product.jsp">科幻</a></li>
+            <li><a href="horry.jsp">恐怖</a></li>
+            <li><a href="love.jsp">愛情</a></li>
+            <li><a href="suspense.jsp">懸疑</a></li>
+            <li><a href="fantasy.jsp">科幻</a></li>
         </ul>
     </ul>
     <!--關於我們-->
