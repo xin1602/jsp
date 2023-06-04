@@ -33,7 +33,7 @@
     </div>
     <input type="search" id="search" placeholder="Search for something...">
     <!--搜尋-->
-    <input type="image" name="submit_Btn" id="submit_Btn" img src="img/search.png" onClick="" >
+    <input type="image" name="submit_Btn" id="submit_Btn" img src="img/search.png" onclick="search()">
 </nav>
 <!-- 處理登出的部分 -->
 <script>
@@ -43,4 +43,8 @@
       window.location.href = "logout.jsp";
     }
   }
+  function search() {
+	  var searchInput = document.getElementById("search").value;
+	  window.location.href = "search.jsp?keyword=" + encodeURIComponent(searchInput);
+	}
 </script>
