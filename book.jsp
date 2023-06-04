@@ -64,7 +64,7 @@
                     <br>庫存：<%= rs.getString(11) %></br>
                 
                     <div class="shopping">
-                        <form name="f "action="" method="post">
+                        <form name="f" action="" method="post">
                             <input type="button" value="-" class="btn minus" onclick="minus(0)"/>
                             <input type="text" name="num" value="1" class="input_num" readonly/>
                             <input type="button" value="+" class="btn add" onclick="add(0)"/></br>
