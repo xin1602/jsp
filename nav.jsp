@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<% String loggedIn = (session != null && session.getAttribute("loggedIn") != null) ? "true" : "false"; %>
+<% boolean loggedIn = (session != null && session.getAttribute("loggedIn") != null) ? true : false; %>
 <nav>
     <!--Logo-->
     <div class="logo"><a href="index.jsp"><img src="img/logo.png" alt="logo"></a></div>
@@ -21,7 +21,7 @@
         <!--會員登入/會員資料-->
       <%
     	// 登入後把link改登出
-    	if (loggedIn == "true") {
+    	if (loggedIn) {
     		out.print("<a onclick = 'logoutCheck()'><img src='img/member.png' alt='member'></a>");
     	} else {
     		out.print("<a href = 'login.jsp'><img src='img/member.png' alt='member'></a>");
