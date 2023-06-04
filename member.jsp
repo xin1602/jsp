@@ -37,7 +37,7 @@
 
 	<%
 		// 有登入的話才會呈現會員資料/評價等等
-		if(loggedIn) {
+		if(loggedIn == "true") {
 	%>
 	<%@ include file="update_profile_data.jsp"%>
 

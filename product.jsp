@@ -22,22 +22,25 @@
     <table>
     <%@ include file="setsql.jsp"%>
     <% 
-            sql="select count(*) from `products` where `category` = '科幻'";
-            ResultSet rs=con.createStatement().executeQuery(sql);
-            int n=rs.nextInt(1);
-            sql="select count(*) from `products` where `category` = '科幻'";
-            ResultSet rs=con.createStatement().executeQuery(sql);
-            while(rs.next()){
-                for(int i=0;i<=n;i++){
-                    if(i%4==1){
+            sql = "select count(*) from `products` where `category` = '科幻'";
+            rs = con.createStatement().executeQuery(sql);
+            int n = 0;
+            if (rs.next()) {
+            	n = rs.getInt("count(*)");
+            }
+            sql = "select * from `products` where `category` = '科幻'";
+            rs = con.createStatement().executeQuery(sql);
+            while (rs.next()){
+                for(int i = 0; i <= n; i++){
+                    if (i % 4 == 1) {
                         out.print("<tr>");
-                        out.print("<td><a href="book.html?number=<%=rs.getString(1)%>"><img src="img/<%=rs.getString(9)%>" alt="<%=rs.getString(3)%>"></a></td>");
+                        out.print("<td><a href='book.jsp?number=" + rs.getString(1) + "'><img src='img/" + rs.getString(9) + "' alt='" + rs.getString(3) + "'></a></td>");
                     }
-                    elif(i%4==2 || i%4==3){
-                        out.print("<td><a href="book.html?number=<%=rs.getString(1)%>"><img src="img/<%=rs.getString(9)%>" alt="<%=rs.getString(3)%>"></a></td>");
+                    else if (i % 4 == 2 || i % 4 == 3){
+                    	out.print("<td><a href='book.jsp?number=" + rs.getString(1) + "'><img src='img/" + rs.getString(9) + "' alt='" + rs.getString(3) + "'></a></td>");
                     }
-                    else{
-                        out.print("<td><a href="book.html?number=<%=rs.getString(1)%>"><img src="img/<%=rs.getString(9)%>" alt="<%=rs.getString(3)%>"></a></td>");
+                    else {
+                    	out.print("<td><a href='book.jsp?number=" + rs.getString(1) + "'><img src='img/" + rs.getString(9) + "' alt='" + rs.getString(3) + "'></a></td>");
                         out.print("</tr>");
                     }
                 }

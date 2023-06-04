@@ -16,7 +16,7 @@
       // 登入成功，設定 session 變數
       String memberName = rs.getString("member_name");
       session.setAttribute("userId", rs.getString("member_id"));
-      session.setAttribute("loggedIn", true);
+      session.setAttribute("loggedIn", "true");
       session.setAttribute("username", memberName);
       session.setAttribute("userEmail", email);
 
