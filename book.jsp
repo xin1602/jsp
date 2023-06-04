@@ -36,14 +36,14 @@
     <%
         String number=request.getParameter("number");
         session.setAttribute("number",number);
-        sql="select * from `products` where `product_id`= +'number'";
-        ResultSet rs=con.createStatement().executeQuery(sql);
+        sql="select * from `products` where `product_id`='"+number+"'";
+        rs=con.createStatement().executeQuery(sql);
         rs.next();
     %>
     <div class="array1">
         <div class="array2">
             <div class="img">
-                <img src="img/<%=rs.getString(9)%>" >
+                <img src='img/<%=rs.getString(9)%>'>
             </div>
             <div class="c">
                 <div class="area"><h1><b><%= rs.getString(3) %></b></h1></div>
@@ -51,15 +51,18 @@
                     <br>作者：<%= rs.getString(4) %></br>
                     <br>出版社：<%= rs.getString(5) %> </br>
                     <br>出版日期：<%= rs.getString(6) %></br>
+                    <br>ISBN：<%= rs.getString(10) %></br>
                     <br>優惠價：<%= rs.getString(7) %></br>
                     <br>庫存：<%= rs.getString(11) %></br>
                 
                     <div class="shopping">
-                        <input type="button" value="-" class="btn minus" onclick="minus(0)">
-                        <input type="text" value="1" class="input_num" readonly>
-                        <input type="button" value="+" class="btn add" onclick="add(0)"></br>
-                        <a href="cart.html"><button class="button_shop cart">加入購物車</button></a>
-                        <a href="check.html"><button class="button_shop purchase">直接購買</button></a>
+                        <form action="">
+                            <input type="button" value="-" class="btn minus" onclick="minus(0)">
+                            <input type="text" value="1" class="input_num" readonly>
+                            <input type="button" value="+" class="btn add" onclick="add(0)"></br>
+                            <a href="cart.html"><button class="button_shop cart">加入購物車</button></a>
+                            <a href="check.html"><button class="button_shop purchase">直接購買</button></a>
+                        </form>
                     </div>
                 </div>
             </div>
