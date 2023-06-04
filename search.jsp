@@ -21,7 +21,7 @@
     <h1><u>搜尋結果</u></h1>
     <table>
     <%@ include file="setsql.jsp"%>
-    <% 
+    <% 	
    	String keyword = request.getParameter("keyword");
     String countQuery = "SELECT COUNT(*) FROM products WHERE category LIKE ? OR product_name LIKE ? OR author LIKE ? OR publishing_house LIKE ? OR info LIKE ? OR ISBN LIKE ?";
     stmt = con.prepareStatement(countQuery);

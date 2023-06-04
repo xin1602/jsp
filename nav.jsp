@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<% boolean loggedIn = (session != null && session.getAttribute("loggedIn") != null) ? true : false; %>
+<% boolean loggedIn = (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")); %>
 <nav>
     <!--Logo-->
     <div class="logo"><a href="index.jsp"><img src="img/logo.png" alt="logo"></a></div>
