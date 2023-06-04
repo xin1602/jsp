@@ -40,10 +40,6 @@
                 int total=0;
 
                 String amount[] = request.getParameterValues("amount");
-                int count = amount.length;//總共有幾個
-                for(int i = 0; i < count ; i++){
-                    out.print(amount[i]+"<br>");
-                }
 
 				while(cartlist.next()){
 					sql="SELECT * FROM `products` WHERE `product_id`='"+cartlist.getString("product_id")+ "'";
