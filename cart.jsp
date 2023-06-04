@@ -19,21 +19,6 @@
     function submitCartForm() {
         document.getElementById('cartForm').submit();
     }
-    function minus(step) {
-        // 在這裡處理減法操作
-        var amountInput = document.getElementsByName("amount")[0];
-        var currentAmount = parseInt(amountInput.value);
-        var newAmount = currentAmount - step;
-        amountInput.value = newAmount;
-    }
-    function plus(step) {
-        // 在這裡處理加法操作
-        var amountInput = document.getElementsByName("amount")[0];
-        var currentAmount = parseInt(amountInput.value);
-        var newAmount = currentAmount + step;
-        amountInput.value = newAmount;
-    }
-
 </script>
 
 <%@ include file="nav.jsp"%>
@@ -76,8 +61,8 @@
                 <ul style="display: flex;justify-content: space-between;align-items: center; margin: 20px 0;">
                     <li><img class="cart_img" src="img/<%=cartP.getString("img")%>"  alt="" ></li>
                     <li class="book_name"><%=cartP.getString("product_name")%></li>
-                    <li class="book_name">NT$:<%=cartP.getString("price")%></li>
-                    <li><input type="button" name="minus" value="-" onclick="minus(<%=num%>)"><input readonly type="text" name="amount" value="<%=cartlist.getString("quantity")%>" oninput="value=value.replace('-', '')"><input type="button" name="plus" value="+" onclick="plus(<%=num%>)" ></li>
+                    <li class="book_name">NT$:<input readonly type="text" name="price" value="<%=cartP.getString("price")%>"></li>
+                    <li><input type="button" name="minus_btn" value="-" onclick="minus(<%=num%>)"><input readonly type="text" name="amount" value="<%=cartlist.getString("quantity")%>" oninput="value=value.replace('-', '')"><input type="button" name="plus_btn" value="+" onclick="plus(<%=num%>)" ></li>
                     <li class="book_name" id="price<%=num%>">NT$:<%=cartlist.getString("price")%></li>
                     <li><p><a href="delete_cart.jsp?pid=<%=cartP.getString("product_id")%>"><img class="garbage" src="img/garbage.png" alt="garbage"></a></p></li>
                 </ul>
@@ -97,41 +82,14 @@
             else{
                 %>
 
-
-                <%-- <ul style="display: flex;justify-content: space-between;align-items: center" id="first">
-                    <li><img class="cart_img" src="https://picsum.photos/200"  alt="" ></li>
-                    <li class="book_name">這裡可以放八個字</li>
-                    <li class="book_name">NT$:<input readonly type="text" name="price" value="290"></li>
-                    <li><input type="button" name="minus" value="-" onclick="minus(0)"><input readonly type="text" name="amount" value="1" oninput="value=value.replace('-', '')"><input type="button" name="plus" value="+" onclick="plus(0)" ></li>
-                    <li class="book_name" id="price0">NT$:290</li>
-                    <li><p onclick="delete1()"><img class="garbage" src="img/garbage.png" alt="garbage"></p></li>
-                </ul>
-                <ul style="display: flex;justify-content: space-between;align-items: center; margin: 20px 0;">
-                    <li><img class="cart_img" src="https://picsum.photos/300"  alt="" ></li>
-                    <li class="book_name">《昆虫记》</li>
-                    <li class="book_name">NT$:<input readonly type="text" name="price" value="240"></li>
-                    <li><input type="button" name="minus" value="-" onclick="minus(1)"><input readonly type="text" name="amount" value="1" oninput="value=value.replace('-', '')"><input type="button" name="plus" value="+" onclick="plus(1)"></li>
-                    <li class="book_name" id="price1">NT$:240</li>
-                    <li><p onclick="delete1()"><img class="garbage" src="img/garbage.png" alt="garbage"></p></li>
-                </ul>
-                <ul style="display: flex;justify-content: space-between;align-items: center; margin: 20px 0;">
-                    <li><img class="cart_img" src="https://picsum.photos/400"  alt="" ></li>
-                    <li class="book_name">一本書</li>
-                    <li class="book_name">NT$:<input readonly type="text" name="price" value="300"></li>
-                    <li><input type="button" name="minus" value="-" onclick="minus(2)"><input readonly type="text" name="amount" value="1" oninput="value=value.replace('-', '')"><input type="button" name="plus" value="+" onclick="plus(2)"></li>
-                    <li class="book_name" id="price2">NT$:300</li>
-                    <li><p onclick="delete1()"><img class="garbage" src="img/garbage.png" alt="garbage"></p></li>
-                </ul> --%>
-
                 <ul style="display: flex;justify-content: space-between;align-items: center; margin: 20px 0;">
                     <li class="book_name">小計：</li>
-                    <li class="book_name">NT$<%=sub_total%></li>
+                    <li id="sub_total" class="book_name">NT$<%=sub_total%></li>
                 </ul>
-
 
                 <ul style="display: flex;justify-content: space-between;align-items: center; margin: 20px 0;">
                     <li class="book_name">優惠：全館9折！</li>
-                    <li class="book_name">-NT$<%=discount%></li>
+                    <li  id="discount" class="book_name">-NT$<%=discount%></li>
                 </ul>
 
                 <ol>
@@ -144,6 +102,7 @@
                 session.setAttribute("discount",Integer.toString(discount));
                 session.setAttribute("total",Integer.toString(total));
             }
+            con.close();
             %>
         </div>
     </div>
