@@ -15,6 +15,26 @@
     <link rel="stylesheet" href="css/cart.css">
 </head>
 <script src="js/cart.js"></script>
+<script>
+    function submitCartForm() {
+        document.getElementById('cartForm').submit();
+    }
+    function minus(step) {
+        // 在這裡處理減法操作
+        var amountInput = document.getElementsByName("amount")[0];
+        var currentAmount = parseInt(amountInput.value);
+        var newAmount = currentAmount - step;
+        amountInput.value = newAmount;
+    }
+    function plus(step) {
+        // 在這裡處理加法操作
+        var amountInput = document.getElementsByName("amount")[0];
+        var currentAmount = parseInt(amountInput.value);
+        var newAmount = currentAmount + step;
+        amountInput.value = newAmount;
+    }
+
+</script>
 
 <%@ include file="nav.jsp"%>
 
@@ -23,6 +43,7 @@
 <body onload="total()">
     <div class="content_cart">
         <p class="cart_p">My Cart</p>
+            
         <div class="cartList">
             <ul>
                 <li>商品圖</li>
@@ -32,33 +53,33 @@
                 <li>金額</li>
                 <li>刪除</li>
             </ul>
-            <form action="check.jsp" method="post">
+            <%
+            String userId=(String)session.getAttribute("userId");
+            sql="SELECT * FROM `cart` WHERE `member_id`='"+userId+"' AND order_no is NULL";
+            ResultSet cartlist=con.createStatement().executeQuery(sql);
+            ResultSet cartP;
+            int num=0;
+            int sub_total=0;
+            int discount=0;
+            int total=0;
+            String noCart="YES";
 
-             <%
-				String userId=(String)session.getAttribute("userId");
-				sql="SELECT * FROM `cart` WHERE `member_id`='"+userId+"' AND order_no is NULL";
-				ResultSet cartlist=con.createStatement().executeQuery(sql);
-				ResultSet cartP;
-                int num=0;
-				int sub_total=0;
-                int discount=0;
-                int total=0;
-				String noCart="YES";
-				while(cartlist.next()){
-					noCart="NO";
-					sql="SELECT * FROM `products` WHERE `product_id`='"+cartlist.getString("product_id")+ "'";
-					cartP=con.createStatement().executeQuery(sql);
-					cartP.next();
+            while(cartlist.next()){
+                    noCart="NO";
+                    sql="SELECT * FROM `products` WHERE `product_id`='"+cartlist.getString("product_id")+ "'";
+                    cartP=con.createStatement().executeQuery(sql);
+                    cartP.next();
 
-			%>
+            %>
+            <form  id="cartForm" action="check.jsp" method="post">
 
                 <ul style="display: flex;justify-content: space-between;align-items: center; margin: 20px 0;">
                     <li><img class="cart_img" src="img/<%=cartP.getString("img")%>"  alt="" ></li>
                     <li class="book_name"><%=cartP.getString("product_name")%></li>
                     <li class="book_name">NT$:<%=cartP.getString("price")%></li>
-                    <li><input type="button" name="minus" value="-" onclick="minus(<%=num%>)"><input readonly type="text" name="amount" value="1" oninput="value=value.replace('-', '')"><input type="button" name="plus" value="+" onclick="plus(<%=num%>)" ></li>
+                    <li><input type="button" name="minus" value="-" onclick="minus(<%=num%>)"><input readonly type="text" name="amount" value="<%=cartlist.getString("quantity")%>" oninput="value=value.replace('-', '')"><input type="button" name="plus" value="+" onclick="plus(<%=num%>)" ></li>
                     <li class="book_name" id="price<%=num%>">NT$:<%=cartlist.getString("price")%></li>
-                    <li><form action='delete_cart.jsp' method="post"><input class="garbage" type="imgge" src="img/garbage.png" width="50" height="50" / ></form></li>
+                    <li><p><a href="delete_cart.jsp?pid=<%=cartP.getString("product_id")%>"><img class="garbage" src="img/garbage.png" alt="garbage"></a></p></li>
                 </ul>
 
                 <%
@@ -68,14 +89,14 @@
                     total=sub_total-discount;
                 }
                 if(noCart=="YES"){
+            %>
+            <br><br><br><br><br>
+            <h2 align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;購物車內尚無商品</h2>
+            <%
+            }
+            else{
                 %>
-                        <br>
-                        <h3 align="center">購物車內尚無商品</h3>
-                        <br>
-                <%
-                }
-                else{
-                %>
+
 
                 <%-- <ul style="display: flex;justify-content: space-between;align-items: center" id="first">
                     <li><img class="cart_img" src="https://picsum.photos/200"  alt="" ></li>
@@ -115,14 +136,14 @@
 
                 <ol>
                     <li id="totalPrice">NT$<%=total%></li>
-                    <li><input type="submit" value="結帳"></li>
+                    <li><a href="#" onclick="submitCartForm()"><span>結帳</span></a></li>
                 </ol>
             </form>
             <%
                 session.setAttribute("sub_total",Integer.toString(sub_total));
                 session.setAttribute("discount",Integer.toString(discount));
                 session.setAttribute("total",Integer.toString(total));
-                }
+            }
             %>
         </div>
     </div>
