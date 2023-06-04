@@ -89,23 +89,33 @@
     <div class="info">
         <h1>購買表單</h1>
         <hr>
+        <%
+            sql = "SELECT * FROM `members` WHERE `member_id`='" + userId+ "' "  ;
+            rs =con.createStatement().executeQuery(sql);
+            rs.next();
+        %>
         <div class="purchase">
-            <form action="#" method="post">
+            <form action="sand_order.jsp" method="post">
                 <label for="name">姓　　名：</label>
-                <input type="text" id="name"><br>
+                <input type="text" id="name" name="name" value="<%=rs.getString("member_name")%>"><br>
                 <label for="phone">連絡電話：</label>
-                <input type="text" id="phone"><br>
+                <input type="text" id="phone" name="phone" value="<%=rs.getString("phone_number")%>"><br>
                 <label for="email">電子信箱：</label>
-                <input type="email" id="email"><br>
+                <input type="email" id="email" name="email" value="<%=rs.getString("email")%>"><br>
                 <label for="payment">付款方式：</label>
-                <select name="payment" id="payment">
+                <select name="payment" id="payment"  name="payment">
                     <option selected="selected">貨到付款</option>
+                    <option>LINE PAY</option>
+                    <option>信用卡</option>
                 </select><br>
                 <label for="address">收件地址：</label>
-                <input type="text" id="address"><br>
-                <button type="submit" id="enter" onclick="location.href='index.html'">確認送出</button>
+                <input type="text" id="address" name="address" value="<%=rs.getString("city")+rs.getString("district")+rs.getString("address")%>"><br>
+                <button type="submit" id="enter">確認送出</button>
             </form>
         </div>
+        <%
+            con.close();
+        %>
     </div>
 
     <!--footer-->
