@@ -28,8 +28,14 @@
     	}
       %>
         <!--購物車-->
-        <a href="cart.jsp"><img src="img/cart.png" alt="cart"></a>
-        
+      <%
+    	// 如果尚未登入，不可進入購物車
+    	if (loggedIn) {
+    		out.print("<a href='cart.jsp'><img src='img/cart.png' alt='cart'></a>");
+    	} else {
+    		out.print("<a onclick='alert(\"請先登入！\");'><img src='img/cart.png' alt='cart'></a>");
+    	}
+      %>
     </div>
     <input type="search" id="search" placeholder="Search for something...">
     <!--搜尋-->
