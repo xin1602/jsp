@@ -86,28 +86,3 @@
 }
 
 %>
-
-
-
-
-<div class="book">
-    <p>推薦商品</p>
-    <div class="image">
-        <div class="recom">
-            <img src="img/fantasy/fantasy06.jpg">
-            <p>這裡可以放八個字</p>
-        </div>
-        <div class="recom">
-            <img src="img/fantasy/fantasy05.jpg">
-            <p>書</p>
-        </div>
-        <div class="recom">
-            <img src="img/fantasy/fantasy04.jpg">
-            <p>書</p>
-        </div>
-        <div class="recom">
-            <img src="img/fantasy/fantasy07.jpg">
-            <p>書</p>
-        </div>
-    </div>
-</div>
