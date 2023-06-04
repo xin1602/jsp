@@ -179,3 +179,14 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-06-03 15:32:50
+drop table if exists `board`;
+create table `board`(
+	board_id int primary key,
+    product_id int,
+    member_name varchar(100),
+    star int,
+    comments varchar(500)
+);
+lock tables `board` write;
+INSERT INTO `board` VALUES(1,27,'辜麗慈',4,'大推啦！我上課都在看停不下來～'),(2,27,'李欣樺',5,'第一次看到這種書！比打code好多了'),(3,27,'陳威宏',5,'如果jsp也能像這本書一樣這麼有趣就好了ＱＱ');
+UNLOCK TABLES;
