@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
-
 <footer>
 	Copyright © 2023 all rights reserved<br>
 	<%
-	  int counter;
+	  int counter = 0;
 	  String strNo = (String)application.getAttribute("counter"); // 讀取 application 變數
 	
 	  if (strNo == null || strNo.equals("")) {
@@ -22,6 +20,4 @@
 	  application.setAttribute("counter", strNo); // 寫入 application 變數
 	  out.print("瀏覽人數：" + counter);
 	%>
-	
-	    
 </footer>

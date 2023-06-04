@@ -16,7 +16,6 @@
         //浮動廣告圖片
         var floatAdImg = "img/ads/1.png";
 
-
         //浮動廣告
         document.writeln("<div id=\"floatAd\" style=\" position:fixed !important; position:absolute; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight)); z-index: 2147483647; left: 50%; margin-left: -400px !important; top: 50%; margin-top: -240px !important; background:url("+floatAdImg+") no-repeat; width:800px; height:500px; cursor:pointer; display:none; \">");
         document.writeln("<div onclick=\"closeFAd();\" style=\" width:60px; height:60px; float:right;\"></div>");
