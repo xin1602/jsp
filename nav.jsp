@@ -51,6 +51,10 @@
   }
   function search() {
 	  var searchInput = document.getElementById("search").value;
-	  window.location.href = "search.jsp?keyword=" + encodeURIComponent(searchInput);
+	  if (searchInput === null || searchInput.trim() === "" || !/^[a-zA-Z0-9\s\u4e00-\u9fa5]+$/.test(searchInput)) {
+		  alert("請重新輸入有效的搜尋詞，僅限中英文、數字");
+		} else {
+		  window.location.href = "search.jsp?keyword=" + encodeURIComponent(searchInput);
+	  }
 	}
 </script>
