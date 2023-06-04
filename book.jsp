@@ -25,6 +25,14 @@
                 document.getElementsByClassName("input_num")[num].value = number + 1;
             }
         }
+        function f1() {
+            document.f.action="to_cart.jsp?mode=1";
+            document.f.submit();
+        }
+        function f2() {
+            document.f.action="to_cart.jsp?mode=2";
+            document.f.submit();
+        }        
     </script>
 </head>
 
@@ -56,12 +64,12 @@
                     <br>庫存：<%= rs.getString(11) %></br>
                 
                     <div class="shopping">
-                        <form action="">
-                            <input type="button" value="-" class="btn minus" onclick="minus(0)">
-                            <input type="text" value="1" class="input_num" readonly>
-                            <input type="button" value="+" class="btn add" onclick="add(0)"></br>
-                            <a href="cart.html"><button class="button_shop cart">加入購物車</button></a>
-                            <a href="check.html"><button class="button_shop purchase">直接購買</button></a>
+                        <form name="f "action="" method="post">
+                            <input type="button" value="-" class="btn minus" onclick="minus(0)"/>
+                            <input type="text" name="num" value="1" class="input_num" readonly/>
+                            <input type="button" value="+" class="btn add" onclick="add(0)"/></br>
+                            <button class="button_shop cart" name="add1" onclick="f1()" >加入購物車</button>
+                            <button class="button_shop purchase" onclick="f2()">直接購買</button>
                         </form>
                     </div>
                 </div>
