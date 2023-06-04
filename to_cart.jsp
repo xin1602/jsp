@@ -4,11 +4,9 @@
 
 <%
 	String userId=(String)session.getAttribute("userId");
-    //boolean loggedIn=(boolean)session.getAttribute("loggedIn");
-    //boolean loggedIn = Boolean.parseBoolean((String)session.getAttribute("loggedIn"));
-    //boolean loggedInObj = (boolean) session.getAttribute("loggedIn");
-    //boolean loggedIn = (loggedInObj != null) ? loggedInObj : false;
-	String product_id=(String)request.getParameter("product_id");
+    //書的編號
+	String product_id=(String)session.getAttribute("number");
+    //加入購物車的商品數量
 	String num=request.getParameter("num");
 	String mode=request.getParameter("mode");
 	if (num==null){
@@ -37,7 +35,7 @@
 			int total_quantity=Integer.valueOf(rs.getString("quantity"))+Integer.valueOf(num);
 			int total_price= price*total_quantity;
 
-			sql = "UPDATE cart SET =quantity'"+total_quantity+"' ,price='"+total_price+"' WHERE `member_id`='" + userId+ "' AND `product_id`='"+product_id+"'" ;
+			sql = "UPDATE cart SET quantity='"+total_quantity+"' ,price='"+total_price+"' WHERE `member_id`='" + userId+ "' AND `product_id`='"+product_id+"'" ;
 			con.createStatement().execute(sql);
 		}
 		else{
@@ -47,7 +45,7 @@
 			con.createStatement().execute(sql);
 		}
 		if (mode.equals("1")){
-			out.print("<script>alert('已成功加入購物車！'); window.location='product.jsp?Pid="+product_id+"' </script>");
+			out.print("<script>alert('已成功加入購物車！'); window.location='book.jsp?number="+product_id+"' </script>");
 		}
 		else if(mode.equals("2")){
 			response.sendRedirect("cart.jsp");
