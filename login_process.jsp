@@ -19,9 +19,10 @@
       session.setAttribute("loggedIn", true);
       session.setAttribute("username", memberName);
       session.setAttribute("userEmail", email);
-
+      
+      String userId = (String) session.getAttribute("userId");
       // 導向首頁
-      if (memberName.equals("管理員")) {
+      if (userId.equals("1")) {
     	  response.sendRedirect("manage.jsp");
       } else {
 	      response.sendRedirect("index.jsp");	  

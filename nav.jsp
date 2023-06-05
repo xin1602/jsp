@@ -33,13 +33,21 @@
     	if (loggedIn) {
     		out.print("<a href='cart.jsp'><img src='img/cart.png' alt='cart'></a>");
     	} else {
-    		out.print("<a onclick='alert(\"請先登入！\");'><img src='img/cart.png' alt='cart'></a>");
+    		out.print("<a onclick='alert(\"請先登入！\"); window.location.href=\"login.jsp\";'><img src='img/cart.png' alt='cart'></a>");
     	}
       %>
     </div>
     <input type="search" id="search" placeholder="Search for something...">
     <!--搜尋-->
     <input type="image" name="submit_Btn" id="submit_Btn" img src="img/search.png" onclick="search()">
+    	<%		// 讓admin可以去管理者頁面
+    	if (loggedIn) {
+    		String m_userId = (String) session.getAttribute("userId");
+			if (m_userId.equals("1")) {
+				out.print("<a href='manage.jsp' style='background-color: transparent; color: white; display: block; margin: 0 auto; font-size: 30px; padding-top:30px;'>管理</a>");
+		      } 
+    	}
+    	%>
 </nav>
 <!-- 處理登出的部分 -->
 <script>
