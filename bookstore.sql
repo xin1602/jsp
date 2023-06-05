@@ -18,6 +18,31 @@ USE `bookstore`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `ads`
+--
+
+DROP TABLE IF EXISTS `ads`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ads` (
+  `ad_id` int NOT NULL AUTO_INCREMENT,
+  `category` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `img` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`ad_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ads`
+--
+
+LOCK TABLES `ads` WRITE;
+/*!40000 ALTER TABLE `ads` DISABLE KEYS */;
+INSERT INTO `ads` VALUES (1,'全','img/ads/1.png'),(2,'全','img/ads/2.png'),(3,'全','img/ads/3.png'),(4,'全','img/ads/4.png'),(5,'全','img/ads/5.png'),(6,'全','img/ads/6.png'),(7,'愛情','img/ads/7.png'),(8,'愛情','img/ads/8.png'),(9,'科幻','img/ads/9.png'),(10,'全','img/ads/10.png'),(11,'全','img/ads/11.png'),(12,'全','img/ads/12.png'),(13,'恐怖','img/ads/13.png'),(14,'全','img/ads/14.png'),(15,'全','img/ads/15.png'),(16,'懸疑','img/ads/16.png');
+/*!40000 ALTER TABLE `ads` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `board`
 --
 
@@ -27,9 +52,9 @@ DROP TABLE IF EXISTS `board`;
 CREATE TABLE `board` (
   `board_id` int NOT NULL AUTO_INCREMENT,
   `product_id` int DEFAULT NULL,
-  `member_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `member_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `star` int DEFAULT NULL,
-  `comments` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comments` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `comments_date` datetime DEFAULT NULL,
   PRIMARY KEY (`board_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -95,6 +120,7 @@ CREATE TABLE `click` (
 
 LOCK TABLES `click` WRITE;
 /*!40000 ALTER TABLE `click` DISABLE KEYS */;
+INSERT INTO `click` VALUES (2,11,3,2,2),(3,3,1,2,1);
 /*!40000 ALTER TABLE `click` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,6 +234,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-05 11:57:17
-select * from products order by sale desc limit 4;
-select * from board where product_id=27 order by comments_date desc;
+-- Dump completed on 2023-06-06  1:53:19
