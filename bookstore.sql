@@ -41,7 +41,7 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES (1,27,'辜麗慈',4,'大推啦！我上課都在看停不下來～','2023-06-01 02:01:01'),(2,27,'李欣樺',5,'第一次看到這種書！比打code好多了','2023-06-01 03:01:01'),(3,27,'陳威宏',5,'如果jsp也能像這本書一樣這麼有趣就好了ＱＱ','2023-06-01 04:01:01');
+INSERT INTO `board` VALUES (2,27,'辜麗慈',4,'大推啦！我上課都在看停不下來～','2023-06-01 02:01:01'),(1,27,'李欣樺',5,'第一次看到這種書！比打code好多了','2023-06-01 03:01:01'),(3,27,'陳威宏',5,'如果jsp也能像這本書一樣這麼有趣就好了ＱＱ','2023-06-01 04:01:01');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,5 +209,14 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-06-05 11:57:17
-select * from products order by sale desc limit 4;
-select * from board where product_id=27 order by comments_date desc;
+#select * from products order by sale desc limit 4;
+#select * from board where product_id=27 order by comments_date desc;
+
+#Tset上架商品
+#天官賜福(一)
+#墨香銅臭
+#平心出版
+#2021/03/18
+#NT 380
+#三界的笑柄、奇葩，曾經的仙樂太子謝憐又飛升啦！天界抖三抖，鐘掉了，金殿也塌了，受害者還是他昔日下屬。
+#9789864940257

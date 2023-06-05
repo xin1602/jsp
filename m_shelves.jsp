@@ -24,14 +24,14 @@
 
 <body>
     <p>產品上架</p>
-    <form action="" method="post">
+    <form action="add_product.jsp" method="post" name="add_product">
         <table class="m_shelves">
             <tr>
                 <td class="m_text">
                     產品名稱
                 </td>
                 <td class="m_text">
-                    <input type="text" name="ProductID" value="">
+                    <input type="text" name="ProductName" value="">
                 </td>
             </tr>
 
@@ -41,11 +41,47 @@
                 </td>
                 <td class="m_text">
                     <select name="ProductType">
-                        <option>&nbsp恐怖&nbsp</option>
-                        <option>&nbsp愛情&nbsp</option>
-                        <option>&nbsp懸疑&nbsp</option>
-                        <option>&nbsp科幻&nbsp</option>
+                        <option value="恐怖">&nbsp恐怖&nbsp</option>
+                        <option value="愛情">&nbsp愛情&nbsp</option>
+                        <option value="懸疑">&nbsp懸疑&nbsp</option>
+                        <option value="科幻">&nbsp科幻&nbsp</option>
                     </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="m_text">
+                    作者
+                </td>
+                <td class="m_text">
+                    <input type="text" name="ProductAuthor" value="">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="m_text">
+                    出版社
+                </td>
+                <td class="m_text">
+                    <input type="text" name="ProductPublishingHouse" value="">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="m_text">
+                    出版日期
+                </td>
+                <td class="m_text">
+                    <input type="date" name="ProductPublishingDate" value="">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="m_text">
+                    ISBN
+                </td>
+                <td class="m_text">
+                    <input type="text" name="ProductISBN" value="">
                 </td>
             </tr>
 
@@ -54,7 +90,7 @@
                     產品價格
                 </td>
                 <td class="m_text">
-                    NT$:<input class="m_text2" type="text" name="ProductPrice" value="">
+                    NT$ : <input class="m_text2" type="text" name="ProductPrice" value="">
                 </td>
             </tr>
 
@@ -72,16 +108,7 @@
                     產品介紹
                 </td>
                 <td class="m_text">
-                    <textarea name="Introduce" rows="6" cols="50"></textarea>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="m_text">
-                    優惠活動
-                </td>
-                <td class="m_text">
-                    <textarea name="Promotions" rows="6" cols="50">活動說明</textarea>
+                    <textarea name="ProductInfo" rows="13" cols="50" placeholder="輸入直接換行即可"></textarea>
                 </td>
             </tr>
 
@@ -90,12 +117,12 @@
                     產品圖片
                 </td>
                 <td class="m_text">
-                    <input type="file" name="pro_photo" id="pro_photo">
+                    <input type="file" name="ProductPhoto" id="pro_photo">
                 </td>
             </tr>
             <tr>
                 <td class="m_text" colspan="2">
-                    <input class="submit_text" type="submit" value="送出資料">
+                    <input class="submit_text" type="submit" value="上架商品">
                 </td>
             </tr>
         </table>
