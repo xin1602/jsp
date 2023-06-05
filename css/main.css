@@ -34,6 +34,7 @@ nav {
   position: absolute;
   z-index: 100;
   min-width: 135px;
+  top: 100px;
 }
 
 .product li {
