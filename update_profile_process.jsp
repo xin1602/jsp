@@ -45,7 +45,7 @@
 
       // 修改成功，導向首頁並取得更新後資料
       String memberEmail = rs.getString("email");
-      String memberName = rs.getString("member_name");
+      memberName = rs.getString("member_name");
       session.setAttribute("userEmail", memberEmail);
       session.setAttribute("username", memberName);
       response.sendRedirect("index.jsp");
