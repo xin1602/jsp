@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="setsql.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,35 +33,72 @@
             <th>年齡分佈</th>
             <th>性別比例</th>
         </tr>
+    <%
+        sql="select sum(`horry_count`) from `click`";
+        ResultSet rsHS=con.createStatement().executeQuery(sql);
+        rsHS.next();
+
+        sql="select count(`horry_count`) from `click` where `horry_count`!= 0";
+        ResultSet rsHC=con.createStatement().executeQuery(sql);
+        rsHC.next();
+
+        sql="select sum(`love_count`) from `click`";
+        ResultSet rsLS=con.createStatement().executeQuery(sql);
+        rsLS.next();
+
+        sql="select count(`love_count`) from `click` where `love_count`!= 0";
+        ResultSet rsLC=con.createStatement().executeQuery(sql);
+        rsLC.next();
+
+        sql="select sum(`suspense_count`) from `click`";
+        ResultSet rsSS=con.createStatement().executeQuery(sql);
+        rsSS.next();
+
+        sql="select count(`suspense_count`) from `click` where `suspense_count`!= 0;";
+        ResultSet rsSC=con.createStatement().executeQuery(sql);
+        rsSC.next();
+
+
+        sql="select sum(`fantasy_count`) from `click`;";
+        ResultSet rsFS=con.createStatement().executeQuery(sql);
+        rsFS.next();
+
+        sql="select count(`fantasy_count`) from `click` where `fantasy_count`!= 0;";
+        ResultSet rsFC=con.createStatement().executeQuery(sql);
+        rsFC.next();
+
+    %>
         <tr class="analyze_text">
             <td>恐怖</td>
-            <td>20</td>
-            <td>4</td>
+            <td><%=rsHS.getString(1)%></td>
+            <td><%=rsHC.getString(1)%></td>
             <td class="analyze_text2"></td>
             <td class="analyze_text2"></td>
         </tr>
         <tr class="analyze_text">
             <td>愛情</td>
-            <td>14</td>
-            <td>3</td>
+            <td><%=rsLS.getString(1)%></td>
+            <td><%=rsLC.getString(1)%></td>
             <td class="analyze_text2"></td>
             <td class="analyze_text2"></td>
         </tr>
         <tr class="analyze_text">
             <td>懸疑</td>
-            <td>40</td>
-            <td>5</td>
+            <td><%=rsSS.getString(1)%></td>
+            <td><%=rsSC.getString(1)%></td>
             <td class="analyze_text2"></td>
             <td class="analyze_text2"></td>
         </tr>
         <tr class="analyze_text">
             <td>科幻</td>
-            <td>32</td>
-            <td>7</td>
+            <td><%=rsFS.getString(1)%></td>
+            <td><%=rsFC.getString(1)%></td>
             <td class="analyze_text2"></td>
             <td class="analyze_text2"></td>
         </tr>
     </table>
-    
+    <%
+        con.close();
+    %>
 </body>
 </html>
