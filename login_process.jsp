@@ -19,7 +19,10 @@
       session.setAttribute("loggedIn", true);
       session.setAttribute("username", memberName);
       session.setAttribute("userEmail", email);
-      
+      session.setAttribute("horry_count",0);
+      session.setAttribute("love_count",0);
+      session.setAttribute("suspense_count",0);
+      session.setAttribute("fantasy_count",0);
       String userId = (String) session.getAttribute("userId");
       // 導向首頁
       if (userId.equals("1")) {
