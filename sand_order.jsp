@@ -1,10 +1,8 @@
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="setsql.jsp"%>
 <%@ page import="java.time.LocalDateTime,java.time.format.DateTimeFormatter" %>
 
 <%
-
 	String name = request.getParameter("name");
 	String phone = request.getParameter("phone");
     String email= request.getParameter("email");
