@@ -37,13 +37,13 @@
                     if(i<=n){
                         if(i%4==1){   %>
                             <tr>
-                            <td><a href='book.jsp?number=<%=rs.getString(1)%>'><img src='img/<%=rs.getString(9)%>' alt='<%=rs.getString(3)%>'><%=rs.getString(3)%></a></td>
+                            <td><a href='book.jsp?number=<%=rs.getString(1)%>'><img src='img/<%=rs.getString(9)%>' alt='<%=rs.getString(3)%>'><br><%=rs.getString(3)%></a></td>
                 <%      }
                         else if(i%4==2 || i%4==3){   %>
-                            <td><a href='book.jsp?number=<%=rs.getString(1)%>'><img src='img/<%=rs.getString(9)%>' alt='<%=rs.getString(3)%>'><%=rs.getString(3)%></a></td>
+                            <td><a href='book.jsp?number=<%=rs.getString(1)%>'><img src='img/<%=rs.getString(9)%>' alt='<%=rs.getString(3)%>'><br><%=rs.getString(3)%></a></td>
                 <%      }
                         else if(i%4==0){    %>
-                            <td><a href='book.jsp?number=<%=rs.getString(1)%>'><img src='img/<%=rs.getString(9)%>' alt='<%=rs.getString(3)%>'><%=rs.getString(3)%></a></td>
+                            <td><a href='book.jsp?number=<%=rs.getString(1)%>'><img src='img/<%=rs.getString(9)%>' alt='<%=rs.getString(3)%>'><br><%=rs.getString(3)%></a></td>
                             </tr>
                 <%      }
                 }
@@ -55,4 +55,3 @@
     <%@ include file="footer.jsp"%>
 </body>
 </html>
-
