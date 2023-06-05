@@ -49,6 +49,26 @@
                 }
             }
         }
+        if((boolean)session.getAttribute("loggedIn")==true){
+            String userId=(String)session.getAttribute("userId");
+            int fantasy_count=(int)session.getAttribute("fantasy_count");
+            sql="select * from `click` where `member_id` = '"+userId+"'";
+            rs=con.createStatement().executeQuery(sql);
+            if(rs.next()){
+                sql="select `fantasy_count` from `click` where `member_id` = '"+userId+"'";
+                ResultSet rsC=con.createStatement().executeQuery(sql);
+                if (rsC.next()) {
+                    fantasy_count=Integer.valueOf(rsC.getString("fantasy_count"))+1;
+                    sql="update `click` set `fantasy_count` = '"+fantasy_count+"' where `member_id` = '"+userId+"'";
+                    int rsU=con.createStatement().executeUpdate(sql);
+                }
+            }
+            else{
+                fantasy_count=1;
+                sql="insert `click`(`member_id`,`fantasy_count`) values('"+userId+"','"+fantasy_count+"')";
+                 boolean rsU=con.createStatement().execute(sql);
+            }
+        }
             con.close();
     %>      
     </table>

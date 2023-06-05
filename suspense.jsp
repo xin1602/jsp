@@ -49,6 +49,26 @@
                 }
             }
         }
+        if((boolean)session.getAttribute("loggedIn")==true){
+            String userId=(String)session.getAttribute("userId");
+            int suspense_count=(int)session.getAttribute("suspense_count");
+            sql="select * from `click` where `member_id` = '"+userId+"'";
+            rs=con.createStatement().executeQuery(sql);
+            if(rs.next()){
+                sql="select `suspense_count` from `click` where `member_id` = '"+userId+"'";
+                ResultSet rsC=con.createStatement().executeQuery(sql);
+                if (rsC.next()) {
+                    suspense_count=Integer.valueOf(rsC.getString("suspense_count"))+1;
+                    sql="update `click` set `suspense_count` = '"+suspense_count+"' where `member_id` = '"+userId+"'";
+                    int rsU=con.createStatement().executeUpdate(sql);
+                }
+            }
+            else{
+                suspense_count=1;
+                sql="insert `click`(`member_id`,`suspense_count`) values('"+userId+"','"+suspense_count+"')";
+                 boolean rsU=con.createStatement().execute(sql);
+            }
+        }
             con.close();
     %>      
     </table>
