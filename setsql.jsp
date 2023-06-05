@@ -10,4 +10,5 @@ String dburl = "jdbc:mysql://localhost:3306/bookstore?characterEncoding=utf8";
 String dbusername = "root";
 String dbpassword = "1234";
 con = DriverManager.getConnection(dburl, dbusername, dbpassword);
+request.setCharacterEncoding("UTF-8");
 %>

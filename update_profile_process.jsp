@@ -2,7 +2,6 @@
 <%@ page import="java.sql.*" %>
 <%@ include file = "setsql.jsp" %>
 <%
-  request.setCharacterEncoding("UTF-8");
   String memberName = request.getParameter("memberName");
   String email = request.getParameter("email");
   String password = request.getParameter("password");
