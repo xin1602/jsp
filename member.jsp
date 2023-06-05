@@ -42,56 +42,7 @@
 	<%@ include file="update_profile_data.jsp"%>
 
     <div class="sec">
-        <h1>訂單記錄</h1>
-        <hr>
-        <table>
-            <tr>
-                <td colspan="2" style="text-align: left;">訂單編號：A20230601001</td>
-                <td colspan="2">下單時間：18:02</td>
-                <td colspan="2">待出貨</td>
-            </tr>
-            <tr>
-                <td><img src="img/horry/horry01.jpg" alt=""></td>
-                <td>樓下的房客</td>
-                <td>$260</td>
-                <td></td>
-                <td>2</td>
-                <td>$520</td>
-            </tr>
-            <tr>
-                <td colspan="2">小計：$520</td>
-                <td colspan="2">優惠：$ 52</td>
-                <td colspan="2">總計：$468</td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td colspan="2" style="text-align: left;">訂單編號：A20230528001</td>
-                <td colspan="2">下單時間：16:22</td>
-                <td colspan="2">已完成</td>
-            </tr>
-            <tr>
-                <td><img src="img/love/love01.jpg" alt=""></td>
-                <td>喜歡你的日子像海</td>
-                <td>$252</td>
-                <td></td>
-                <td>1</td>
-                <td>$252</td>
-            </tr>
-            <tr>
-                <td><img src="img/fantasy/fantasy02.jpg" alt=""></td>
-                <td>華龍之功</td>
-                <td>$349</td>
-                <td></td>
-                <td>2</td>
-                <td>$698</td>
-            </tr>
-            <tr>
-                <td colspan="2">小計：$950</td>
-                <td colspan="2">優惠：$ 95</td>
-                <td colspan="2">總計：$855</td>
-            </tr>
-        </table>
+        <%@ include file="member_order.jsp"%>
     </div>
 
     <div class="sec">
