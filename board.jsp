@@ -40,7 +40,7 @@
 <%
     }
     else{
-        sql="select * from `board` where `product_id` = '"+number+"'";
+        sql="select * from `board` where `product_id`='"+number+"'order by `comments_date` desc";
         rs=con.createStatement().executeQuery(sql);
 %>
         <div class="comment">

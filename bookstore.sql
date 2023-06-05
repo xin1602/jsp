@@ -210,3 +210,4 @@ UNLOCK TABLES;
 
 -- Dump completed on 2023-06-05 11:57:17
 select * from products order by sale desc limit 4;
+select * from board where product_id=27 order by comments_date desc;
