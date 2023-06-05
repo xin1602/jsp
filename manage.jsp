@@ -15,34 +15,34 @@
 
 <nav>
     <!--Logo-->
-    <div class="logo"><a href="manage.jsp"><img src="img/logo.png" alt="logo"></a></div>
+    <div class="logo"><a href="index.jsp"><img src="img/logo.png" alt="logo"></a></div>
  
     <!--會員登入/會員資料-->
-    <div class="member"><a href="index.jsp"><img src="img/member.png" alt="member"></a></div>
+    <div class="member"><a href="manage.jsp"><img src="img/member.png" alt="member"></a></div>
 </nav>
 <body>
     <table class="manage">
         <tr>
             <td class="manage_text">
-               <a href="m_shelves.html">產品上架</a> 
+               <a href="m_shelves.jsp">產品上架</a> 
             </td>
         </tr>
 
         <tr>
             <td class="manage_text">
-               <a href="m_edit.html">產品查詢&變更</a>
+               <a href="m_edit.jsp">產品查詢&變更</a>
             </td>
         </tr>
 
         <tr>
             <td class="manage_text">
-               <a href="m_sales.html">銷貨紀錄</a>
+               <a href="m_sales.jsp">銷貨紀錄</a>
             </td>
         </tr>
 
         <tr>
             <td class="manage_text">
-               <a href="m_analyze.html">瀏覽者點閱行為分析</a>
+               <a href="m_analyze.jsp">瀏覽者點閱行為分析</a>
             </td>
         </tr>
     </table>
