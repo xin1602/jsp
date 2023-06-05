@@ -86,6 +86,9 @@
     <!-- 商品留言區與評論區 -->
     <%@ include file="board.jsp"%>
 
+    <!-- 推薦商品區 -->
+    <%@ include file="recommend.jsp"%>
+
     <!-- footer -->
     <%@ include file="footer.jsp"%>
 </body>
