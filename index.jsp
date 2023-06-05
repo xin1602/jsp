@@ -71,45 +71,47 @@
 
         <!--類別推薦-->
         <!--參考資料：https://xuan891102.github.io/resume/-->
+        <%@ include file="setsql.jsp"%>
+        
         <h1>熱門商品</h1>
-        <section class="sec_timeline">
-            <div class="timeline">
-                <div class="container left">
-                    <div class="content timecard ">
-                        <h2 class="book">書名</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis provident ducimus nulla officiis, delectus ea repellat! Alias, asperiores eligendi. Error saepe quam blanditiis numquam, eos veritatis sed maxime corrupti. Aut!
-                        Explicabo, labore expedita architecto eum odit animi. Voluptas culpa vel impedit unde, inventore a tenetur necessitatibus accusamus fugiat ea ex nisi. Harum, rem? Blanditiis sequi exercitationem officia, dolorum tempora iure?
-                        Velit aperiam cum aliquid facere adipisci iste dolor quasi eius quas, inventore ea eveniet magni perferendis consequuntur accusamus modi eligendi fuga unde voluptate. Sed, voluptates accusamus! Dolores reiciendis consequuntur autem.
-                        Repudiandae, laboriosam culpa deleniti delectus reiciendis porro adipisci? Inventore harum facere dicta voluptatibus reprehenderit atque nostrum quos consequatur pariatur laudantium. Ea iusto officiis illo voluptate quo exercitationem ad, quos saepe.
-                        Placeat, ipsam dolorum odit id nostrum dolore doloribus ad, hic nihil minima eaque facilis repudiandae optio fuga, sapiente delectus vero temporibus unde quis numquam iure quibusdam. Sit iste magni sint.</p>
-                        <a href="book.html">Read more~</a>
-                        <div class="bookimg"><img class="timepicture" src="img/horry/horry01.jpg"  ></div>
+        <section class="sec_timeline" style="height: auto;">
+            <div class="timeline" style="height: auto;">
+<%
+            sql="select * from products order by sale desc limit 4";
+            rs=con.createStatement().executeQuery(sql);
+            int n=0;
+            while(rs.next()){
+                n++;
+                if(n%2==1){
+%>
+                    <div class="container left" >
+                        <div class="content timecard" style="height: auto;">
+                            <h2 class="book"><%=rs.getString(3)%></h2>
+                            <p  style="height: auto;"><%=rs.getString(8)%></p>
+                            <a href="book.jsp?number=<%=rs.getString(1)%>">Read more~</a>
+                            <div class="bookimg"><img class="timepicture" src="img/<%=rs.getString(9)%>"  ></div>
+                        </div>
                     </div>
-                </div>
-                <div class="container right">
-                    <div class="content timecard">
-                        <h2 class="book">書名</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid voluptatum quis autem obcaecati libero asperiores qui ad quibusdam laborum? Cupiditate facilis cum impedit vel laboriosam repellat possimus eveniet odit id?</p>
-                        <a href="book.html">Read more~</a>
-                        <div class="bookimg"><img  class="timepicture" src="img/love/love01.jpg"></a></div>
+<%
+
+                }
+                if(n%2==0){
+%>
+                    <div class="container right">
+                        <div class="content timecard" style="height: auto;">
+                            <h2 class="book"><%=rs.getString(3)%></h2>
+                            <p style="height: auto;"><%=rs.getString(8)%></p>
+                            <a href="book.jsp?number=<%=rs.getString(1)%>">Read more~</a>
+                            <div class="bookimg"><img class="timepicture"  src="img/<%=rs.getString(9)%>"></a></div>
+                        </div>
                     </div>
-                </div>
-                <div class="container left">
-                    <div class="content timecard ">
-                        <h2 class="book">書名</h2>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab dolorem perspiciatis aut doloribus, sequi voluptatibus. At iusto modi sit reprehenderit quibusdam officia non, vero quos eaque temporibus! Libero, officia dolore.</p>
-                        <a href="book.html">Read more~</a>
-                        <div class="bookimg"><img class="timepicture" src="img/suspense/suspense01.jpg"></div>
-                    </div>
-                </div>
-                <div class="container right">
-                    <div class="content timecard ">
-                        <h2 class="book">書名</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur vero exercitationem ad ipsum totam quasi mollitia hic culpa qui! Veniam delectus ab deleniti, explicabo minima sint iusto asperiores similique fugit.</p>
-                        <a href="book.html">Read more~</a>
-                        <div class="bookimg"><img class="timepicture"  src="img/fantasy/fantasy01.jpg"></a></div>
-                    </div>
-                </div>
+<%
+
+                }
+            }
+%>
+               
+                
             </div>
         </section>
 
