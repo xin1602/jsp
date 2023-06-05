@@ -56,29 +56,6 @@
   } catch (Exception e) {
     e.printStackTrace();
     // 處理例外狀況
-  } finally {
-    // 關閉資源
-    if (rs != null) {
-      try {
-        rs.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-    }
-    if (stmt != null) {
-      try {
-        stmt.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-    }
-    if (con != null) {
-      try {
-        con.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-    }
   }
  }
 %>
