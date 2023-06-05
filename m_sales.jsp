@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="setsql.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,67 +13,70 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/manage.css">
     <link rel="stylesheet" href="css/m_sales.css">
+    <link rel="stylesheet" href="css/member.css">
 </head>
 
 <nav>
     <!--Logo-->
-    <div class="logo"><a href="manage.html"><img src="img/logo.png" alt="logo"></a></div>
+    <div class="logo"><a href="index.jsp"><img src="img/logo.png" alt="logo"></a></div>
  
     <!--會員登入/會員資料-->
-    <div class="member"><a href="index.html"><img src="img/member.png" alt="member"></a></div>
+    <div class="member"><a href="manage.jsp"><img src="img/member.png" alt="member"></a></div>
 </nav>
 
 </head>
 <body>
     <p>銷貨紀錄</p>
-    <table class="m_sales" border="1">
-        <tr>
-            <th>訂單編號</th>
-            <th>下訂日期</th>
-            <th>訂單狀況</th>
-            <th>產品名稱</th>
-            <th>單價</th>
-            <th>數量</th>
-            <th>小計</th>
-            <th>優惠</th>
-            <th>合計</th>
-        </tr>
-        <tr>
-            <td>A123456</td>
-            <td>2023/05/28</td>
-            <td>已完成</td>
-            <td>一本書的名字哈哈</td>
-            <td>300</td>
-            <td>2</td>
-            <td>600</td>
-            <td>60</td>
-            <td>540</td>
-        </tr>
-        <tr>
-            <td>B456789</td>
-            <td>2023/05/29</td>
-            <td>已取消</td>
-            <td>三個字</td>
-            <td>270</td>
-            <td>1</td>
-            <td>270</td>
-            <td>0</td>
-            <td>270</td>
-        </tr>
-        <tr>
-            <td>C987643</td>
-            <td>2023/05/31</td>
-            <td>待出貨</td>
-            <td>星星點燈</td>
-            <td>215</td>
-            <td>3</td>
-            <td>645</td>
-            <td>65</td>
-            <td>581</td>
-        </tr>
-       
-        
-    </table>
+    <%
+        sql="SELECT * FROM `order` ORDER BY `date`";
+        ResultSet rsOrder=con.createStatement().executeQuery(sql);
 
+        String noOrder="YES";
+
+        while(rsOrder.next()){
+            noOrder="NO";
+            sql="SELECT * FROM `cart` WHERE `order_no`='"+rsOrder.getString("order_no")+"'";
+            ResultSet detail=con.createStatement().executeQuery(sql);
+            ResultSet cartP;
+    %>
+    <table>
+        <tr>
+            <td colspan="2" style="text-align: left;">訂單編號：<%=rsOrder.getString("order_no")%></td>
+            <td colspan="2">下單時間：<%=rsOrder.getString("date")%></td>
+            <td colspan="2"><%=rsOrder.getString("status")%></td>
+        </tr>
+        <%
+            while(detail.next()){
+                sql="SELECT * FROM `products` WHERE `product_id`='"+detail.getString("product_id")+ "'";
+                cartP=con.createStatement().executeQuery(sql);
+                cartP.next();
+        %>
+        <tr>
+            <td><img src="img/<%=cartP.getString("img")%>" alt=""></td>
+            <td><%=cartP.getString("product_name")%></td>
+            <td>$<%=cartP.getString("price")%></td>
+            <td></td>
+            <td><%=detail.getString("quantity")%></td>
+            <td>$ <%=detail.getString("price")%></td>
+        </tr>
+        <%
+            }
+        %>
+        <tr>
+            <td colspan="2">小計：$ <%=rsOrder.getString("sub_total")%></td>
+            <td colspan="2">優惠：$ <%=rsOrder.getString("discount")%></td>
+            <td colspan="2">總計：$ <%=rsOrder.getString("total")%></td>
+        </tr>
+    </table>
+    <%
+        }
+        if(noOrder.equals("YES")){
+    %>
+        <br>
+        <h2 align="center">尚無任何訂單</h2>
+        <br>
+    <%
+        }
+     %>
 </body>
 </html>
