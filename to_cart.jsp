@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
 <%@ include file="setsql.jsp"%>
-
+<% 
+  boolean loggedIn = false; 
+  if (session != null && session.getAttribute("loggedIn") != null) {
+    loggedIn = (Boolean) session.getAttribute("loggedIn");
+  }
+%>
 <%
 	String userId=(String)session.getAttribute("userId");
     //書的編號
@@ -56,10 +61,10 @@ else {
 	rsP.next();
 	int price=Integer.valueOf(rsP.getString("price"));
 
-	if(session.getAttribute("loggedIn")==null){
+	if(!loggedIn){
 		out.print("<script>alert('請先登入！');window.location='login.jsp' </script>");
 	}
-	else if((boolean)session.getAttribute("loggedIn")==true){
+	else if(loggedIn){
 		if(rs.next()){
 			int total_quantity=Integer.valueOf(rs.getString("quantity"))+Integer.valueOf(num);
 			int total_price= price*total_quantity;

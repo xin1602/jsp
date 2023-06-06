@@ -49,7 +49,7 @@
                 }
             }
         }
-        if((boolean)session.getAttribute("loggedIn")==true){
+        if(loggedIn){
             String userId=(String)session.getAttribute("userId");
             int love_count=(int)session.getAttribute("love_count");
             sql="select * from `click` where `member_id` = '"+userId+"'";

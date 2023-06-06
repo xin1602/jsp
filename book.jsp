@@ -47,7 +47,7 @@
         sql="select * from `products` where `product_id`='"+number+"'";
         rs=con.createStatement().executeQuery(sql);
         rs.next();
-        if((boolean)session.getAttribute("loggedIn")==true){
+        if(loggedIn){
             String userId=(String)session.getAttribute("userId");
             String category="";
             if(rs.getString("category").equals("恐怖")){
