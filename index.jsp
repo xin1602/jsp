@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="setsql.jsp"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.stream.Collectors" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +19,83 @@
     <script>
         // JavaScript Document
         //浮動廣告圖片
-        var floatAdImg = "img/ads/1.png";
+        <% 
+            boolean loggedIn1 = false;
+            if (session != null && session.getAttribute("loggedIn") != null) {
+                loggedIn1 = (Boolean) session.getAttribute("loggedIn");
+            }
+
+            if(loggedIn1){
+                String userId=(String)session.getAttribute("userId");
+                sql="SELECT * FROM `click` WHERE `member_id`= '" + userId + "'";
+                rs=con.createStatement().executeQuery(sql);
+                int horry_count=0;
+                int love_count=0;
+                int suspense_count=0;
+                int fantasy_count=0;
+                if(rs.next()){
+                    horry_count=Integer.parseInt(rs.getString("horry_count"));
+                    love_count=Integer.parseInt(rs.getString("love_count"));
+                    suspense_count=Integer.parseInt(rs.getString("suspense_count"));
+                    fantasy_count=Integer.parseInt(rs.getString("fantasy_count"));
+                }
+
+                List<String> category =new ArrayList<String>();
+                if(fantasy_count==0 && love_count==0 && suspense_count==0 && fantasy_count==0){
+                    category.add("全");
+                }else{
+                    if(horry_count>=love_count && horry_count>=suspense_count && horry_count>=fantasy_count){
+                        category.add("恐怖");
+                    }
+                    if(love_count>=horry_count && love_count>=suspense_count && love_count>=fantasy_count){
+                        category.add("愛情");
+                    }
+                    if(suspense_count>=horry_count && suspense_count>=love_count && suspense_count>=fantasy_count){
+                        category.add("懸疑");
+                    }
+                    if(fantasy_count>=horry_count && fantasy_count>=love_count && fantasy_count>=suspense_count){
+                        category.add("科幻");
+                    }
+                }
+
+                Collections.shuffle(category);
+                List<String> random_category = category.subList(0, 1);
+                String joined_category = String.join("", random_category);
+                List<Integer> ad =new ArrayList<Integer>();
+                sql = "select * from ads where `category` = '"+joined_category+"'";
+                rs=con.createStatement().executeQuery(sql);
+                while(rs.next()){
+                    ad.add(Integer.parseInt(rs.getString("ad_id")));
+                }
+                Collections.shuffle(ad);
+                List<Integer> random_ad = ad.subList(0, 1);
+                List<String> stringAdList = new ArrayList<>();
+                for (Integer adId : random_ad) {
+                    stringAdList.add(adId.toString());
+                }
+                String joinedAd = String.join("", stringAdList);
+
+                sql="SELECT * FROM `ads` WHERE `ad_id`= '" + joinedAd + "'";
+                rs=con.createStatement().executeQuery(sql);
+                while(rs.next()){
+                    out.print("var floatAdImg = \""+rs.getString("img")+"\";");
+                }
+
+            }
+            else{
+                List<String> ad =new ArrayList<String>();
+                sql = "select * from ads";
+                rs=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery(sql);
+                while(rs.next()){
+                   ad.add(rs.getString("img"));
+                }
+                Collections.shuffle(ad);
+                List<String> random_ad = ad.subList(0, 1);
+                String joinedAd = String.join("", random_ad);
+                out.print("var floatAdImg = \""+joinedAd+"\";");
+            }
+        %>
+
 
         //浮動廣告
         document.writeln("<div id=\"floatAd\" style=\" position:fixed !important; position:absolute; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight)); z-index: 2147483647; left: 50%; margin-left: -400px !important; top: 50%; margin-top: -240px !important; background:url("+floatAdImg+") no-repeat; width:800px; height:500px; cursor:pointer; display:none; \">");
@@ -71,7 +152,7 @@
 
         <!--類別推薦-->
         <!--參考資料：https://xuan891102.github.io/resume/-->
-        <%@ include file="setsql.jsp"%>
+
         
         <h1>熱門商品</h1>
         <section class="sec_timeline" style="height: auto;">
@@ -114,7 +195,9 @@
                 
             </div>
         </section>
-
+        <%
+            con.close();
+        %>
         <!--footer-->
         <%@ include file="footer.jsp"%>
 
