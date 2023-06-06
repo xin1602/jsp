@@ -76,7 +76,8 @@
                 </td>
                 <td class="m_text">
                     <select name="ProductType">
-                        <%
+                        <%  
+                            //存入ArrayList判斷為哪種類型
                             ArrayList<String> category = new ArrayList<String>();
                             category.add("恐怖");
                             category.add("愛情");
