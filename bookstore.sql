@@ -18,6 +18,31 @@ USE `bookstore`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `about`
+--
+
+DROP TABLE IF EXISTS `about`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `about` (
+  `about_id` int NOT NULL,
+  `about_name` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about_exp` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`about_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `about`
+--
+
+LOCK TABLES `about` WRITE;
+/*!40000 ALTER TABLE `about` DISABLE KEYS */;
+INSERT INTO `about` VALUES (1,'許恬綺','心得'),(2,'黃雅芳','心得'),(3,'陳亮竹','心得'),(4,'李欣樺','心得'),(5,'辜麗慈','心得'),(6,'陳威宏','秉持著大一從做中學的精神，繼續在網站設計的領域由後端的角度奮戰，\n後端的核心在於實現商業邏輯，果然邏輯這件事情是很難建立關聯的。在自學與不斷收到error:500的錯誤中不斷嘗試與思考究竟要做到什麼地步，\n好像怎麼寫都對又好像怎麼寫都錯，卻又不甘於算了，還是方便就好。非常感謝組員們用盡了耐心彼此交換意見，讓這份專案能夠順利完工。');
+/*!40000 ALTER TABLE `about` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ads`
 --
 
@@ -26,8 +51,8 @@ DROP TABLE IF EXISTS `ads`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ads` (
   `ad_id` int NOT NULL AUTO_INCREMENT,
-  `category` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `img` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ad_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -66,7 +91,7 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES (2,27,'辜麗慈',4,'大推啦！我上課都在看停不下來～','2023-06-01 02:01:01'),(1,27,'李欣樺',5,'第一次看到這種書！比打code好多了','2023-06-01 03:01:01'),(3,27,'陳威宏',5,'如果jsp也能像這本書一樣這麼有趣就好了ＱＱ','2023-06-01 04:01:01');
+INSERT INTO `board` VALUES (1,27,'李欣樺',5,'第一次看到這種書！比打code好多了','2023-06-01 03:01:01'),(2,27,'辜麗慈',4,'大推啦！我上課都在看停不下來～','2023-06-01 02:01:01'),(3,27,'陳威宏',5,'如果jsp也能像這本書一樣這麼有趣就好了ＱＱ','2023-06-01 04:01:01');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +259,6 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-06  1:53:19
 #select * from products order by sale desc limit 4;
 #select * from board where product_id=27 order by comments_date desc;
 

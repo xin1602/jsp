@@ -14,120 +14,28 @@
     <link rel="stylesheet" href="css/about_team.css">
 </head>
 
-<%@ include file="nav.jsp"%>
-
+<%@ include file = "nav.jsp"%>
+<%@ include file = "setsql.jsp" %>
+<%
+  sql = "select * from `about`";
+  rs = con.createStatement().executeQuery(sql);
+%>
 <body>
     <h1>團隊成員</h1>
     <!--翻書-->
     <div class="container_team">
+    <%  while( rs.next() ) { %>
         <div class="card">
           <div class="imgBox">
-            <img src="https://picsum.photos/200" width="300" height="400" />
+            <img src="img/profilepic/<%= rs.getInt(1) %>.jpg" width="300" height="400" />
           </div>
           <div class="contents">
-            <h2>WE ARE GIANTS</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <h2><%= rs.getString(2) %></h2>
+            <p><%= rs.getString(3) %></p>
           </div>
         </div>
-  
-        <div class="card">
-          <div class="imgBox">
-            <img src="https://picsum.photos/300" width="300" height="400" />
-          </div>
-          <div class="contents">
-            <h2>The Mysterious Lake Bandit</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="imgBox">
-            <img src="img/profilepic/person1.png" width="300" height="400" />
-          </div>
-          <div class="contents">
-            <h2>THE WILD ROBOT</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-        </div>
-      </div>
+  <% } %>
 
-      <div class="container_team">
-        <div class="card">
-          <div class="imgBox">
-            <img src="https://picsum.photos/500" width="300" height="400" />
-          </div>
-          <div class="contents">
-            <h2>WE ARE GIANTS</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-        </div>
-  
-        <div class="card">
-          <div class="imgBox">
-            <img src="https://picsum.photos/600" width="300" height="400" />
-          </div>
-          <div class="contents">
-            <h2>The Mysterious Lake Bandit</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="imgBox">
-            <img src="https://picsum.photos/700" width="300" height="400" />
-          </div>
-          <div class="contents">
-            <h2>THE WILD ROBOT</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-        </div>
-      </div>
 
       <main>
         <article>
