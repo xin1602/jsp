@@ -46,44 +46,9 @@
     </div>
 
     <div class="sec">
-        <h1>評論紀錄</h1>
-        <hr>
-        <table>
-            <tr>
-                <td>產品圖片</td>
-                <td>時間</td>
-                <td>產品名稱</td>
-                <td>評論內容</td>
-            </tr>
-            <tr>
-                <td><img src="img/fantasy/fantasy02.jpg" alt=""></td>
-                <td>2023/5/30 10:48</td>
-                <td>華龍之宮</td>
-                <td>
-                    ⭐⭐⭐⭐⭐<br>
-                    這本書超級好看的喔~~
-                </td>
-            </tr>
-            <tr>
-                <td><img src="img/suspense/suspense03.jpg" alt=""></td>
-                <td>2023/5/20 21:17</td>
-                <td>一個都不留</td>
-                <td>
-                    ⭐⭐⭐⭐⭐<br>
-                    喜歡!
-                </td>
-            </tr>
-            <tr>
-                <td><img src="img/fantasy/fantasy05.jpg" alt=""></td>
-                <td>2023/4/1 17:28</td>
-                <td>靈魂穿越手稿</td>
-                <td>
-                    ⭐⭐⭐⭐<br>
-                    好看~但是不是我的菜!
-                </td>
-            </tr>
-        </table>
+        <%@ include file="member_comment.jsp" %>
     </div>
+
     <%
  	 // 有登入的話才會呈現會員資料/評價等等，沒登入就去登入吧~
      } else {
