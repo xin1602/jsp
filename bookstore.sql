@@ -67,33 +67,7 @@ INSERT INTO `ads` VALUES (1,'全','img/ads/1.png'),(2,'全','img/ads/2.png'),(3,
 /*!40000 ALTER TABLE `ads` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `board`
---
 
-DROP TABLE IF EXISTS `board`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `board` (
-  `board_id` int NOT NULL AUTO_INCREMENT,
-  `product_id` int DEFAULT NULL,
-  `member_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `star` int DEFAULT NULL,
-  `comments` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `comments_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`board_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `board`
---
-
-LOCK TABLES `board` WRITE;
-/*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES (1,27,'李欣樺',5,'第一次看到這種書！比打code好多了','2023-06-01 03:01:01'),(2,27,'辜麗慈',4,'大推啦！我上課都在看停不下來～','2023-06-01 02:01:01'),(3,27,'陳威宏',5,'如果jsp也能像這本書一樣這麼有趣就好了ＱＱ','2023-06-01 04:01:01');
-/*!40000 ALTER TABLE `board` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `cart`
@@ -260,3 +234,45 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-06-06 23:40:33
+
+--
+-- Table structure for table `board`
+--
+
+DROP TABLE IF EXISTS `board`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `board` (
+  `board_id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int DEFAULT NULL,
+  `member_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `star` int DEFAULT NULL,
+  `comments` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comments_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`board_id`),
+  FOREIGN KEY(`product_id`) REFERENCES `products`(`product_id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `board`
+--
+
+LOCK TABLES `board` WRITE;
+/*!40000 ALTER TABLE `board` DISABLE KEYS */;
+INSERT INTO `board` VALUES (1,27,'李欣樺',5,'第一次看到這種書！比打code好多了','2023-06-01 03:01:01'),(2,27,'辜麗慈',4,'大推啦！我上課都在看停不下來～','2023-06-01 02:01:01'),(3,27,'陳威宏',5,'如果jsp也能像這本書一樣這麼有趣就好了ＱＱ','2023-06-01 04:01:01');
+/*!40000 ALTER TABLE `board` ENABLE KEYS */;
+UNLOCK TABLES;
+
+#合併產品表與留言板＝會員評論紀錄
+DELIMITER $$
+DROP PROCEDURE IF EXISTS member_comment; $$
+CREATE PROCEDURE member_comment (IN memberName varchar(100))
+BEGIN
+    select products.img, board.comments_date, products.product_name, board.star, board.comments
+    from board
+    join products on(board.product_id=products.product_id)
+    where board.member_name=memberName
+    order by comments_date desc;
+END $$
+DELIMITER ;
