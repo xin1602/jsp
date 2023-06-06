@@ -18,7 +18,9 @@
 %>
 
         <div class="recom">
-            <img src="img/<%=rs.getString(9)%>">
+            <a href="book.jsp?number=<%=rs.getString(1)%>">
+                <img src="img/<%=rs.getString(9)%>">
+            </a>
             <p><%=rs.getString(3)%></p>
         </div>
 
