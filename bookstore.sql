@@ -235,3 +235,14 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-06-06  1:53:19
+#select * from products order by sale desc limit 4;
+#select * from board where product_id=27 order by comments_date desc;
+
+#Tset上架商品
+#天官賜福(一)
+#墨香銅臭
+#平心出版
+#2021/03/18
+#NT 380
+#三界的笑柄、奇葩，曾經的仙樂太子謝憐又飛升啦！天界抖三抖，鐘掉了，金殿也塌了，受害者還是他昔日下屬。
+#9789864940257
