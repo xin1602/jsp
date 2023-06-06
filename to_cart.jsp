@@ -42,7 +42,7 @@ else {
     con.createStatement().execute(sql);
 }
 */
-   /String query = "SELECT * FROM `cart` WHERE `member_id`= ? AND `product_id`= ? ";
+    String query = "SELECT * FROM `cart` WHERE `member_id`= ? AND `product_id`= ? ";
     stmt = con.prepareStatement(query);
     stmt.setString(1, userId);
     stmt.setString(2, product_id);
