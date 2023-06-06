@@ -47,6 +47,38 @@
         sql="select * from `products` where `product_id`='"+number+"'";
         rs=con.createStatement().executeQuery(sql);
         rs.next();
+        if((boolean)session.getAttribute("loggedIn")==true){
+            String userId=(String)session.getAttribute("userId");
+            String category="";
+            if(rs.getString("category").equals("恐怖")){
+                category="horry_count";
+            }else if(rs.getString("category").equals("愛情")){
+                category="love_count";
+            }
+            else if(rs.getString("category").equals("懸疑")){
+                category="suspense_count";
+            }
+            else if(rs.getString("category").equals("科幻")){
+                category="fantasy_count";
+            }
+            int category_count=(int)session.getAttribute(category);
+            sql="select * from `click` where `member_id` = '"+userId+"'";
+            ResultSet rsF=con.createStatement().executeQuery(sql);
+            if(rsF.next()){
+                sql="select `"+category+"` from `click` where `member_id` = '"+userId+"'";
+                ResultSet rsC=con.createStatement().executeQuery(sql);
+                if (rsC.next()) {
+                    category_count=Integer.valueOf(rsC.getString(category))+1;
+                    sql="update `click` set `"+category+"` = '"+category_count+"' where `member_id` = '"+userId+"'";
+                    int rsU=con.createStatement().executeUpdate(sql);
+                }
+            }
+            else{
+                category_count=1;
+                sql="insert `click`(`member_id`,`"+category+"`) values('"+userId+"','"+category_count+"')";
+                 boolean rsU=con.createStatement().execute(sql);
+            }
+        }
     %>
     <div class="array1">
         <div class="array2">
