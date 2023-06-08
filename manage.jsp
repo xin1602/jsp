@@ -30,7 +30,7 @@
 
         <tr>
             <td class="manage_text">
-               <a href="m_edit.jsp">產品查詢&變更</a>
+               <a href="m_search.jsp">產品查詢&變更</a>
             </td>
         </tr>
 
