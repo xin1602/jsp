@@ -16,6 +16,7 @@
 </head>
 <script src="js/cart.js"></script>
 <script>
+    // 結帳 提交表單
     function submitCartForm() {
         document.getElementById('cartForm').submit();
     }
@@ -62,8 +63,9 @@
                     <li><img class="cart_img" src="img/<%=cartP.getString("img")%>"  alt="" ></li>
                     <li class="book_name"><%=cartP.getString("product_name")%></li>
                     <li class="book_name">NT$:<input readonly type="text" name="price" value="<%=cartP.getString("price")%>"></li>
-                    <li><input type="button" name="minus_btn" value="-" onclick="minus(<%=num%>)"><input readonly type="text" name="amount" value="<%=cartlist.getString("quantity")%>" oninput="value=value.replace('-', '')"><input type="button" name="plus_btn" value="+" onclick="plus(<%=num%>)" ></li>
+                    <li><input type="button" name="minus_btn" value="-" onclick="minus(<%=num%>)"><input readonly type="text" name="amount" value="<%=cartlist.getString("quantity")%>" oninput="value=value.replace('-', '')" onchange="checkStock(<%=num%>)"><input type="button" name="plus_btn" value="+" onclick="plus(<%=num%>)" ></li>
                     <li class="book_name" id="price<%=num%>">NT$:<%=cartlist.getString("price")%></li>
+                    <li><input type="hidden" name="stock" value="<%=cartP.getString("stock")%>"></li>
                     <li><p><a href="delete_cart.jsp?pid=<%=cartP.getString("product_id")%>"><img class="garbage" src="img/garbage.png" alt="garbage"></a></p></li>
                 </ul>
 

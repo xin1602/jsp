@@ -25,6 +25,14 @@ function plus(index) {
   var amounts = document.getElementsByName("amount");
   //得到第一个amount的元素的value属性的值
   var count = parseInt(amounts[index].value) + 1; //数量加1
+  var stocks = document.getElementsByName("stock");
+  var stock = parseInt(stocks[index].value);
+  if (count > stock) {
+    alert("庫存不足，無法選購該數量");
+    // 将数量设置为库存量
+    count = stock;
+  }
+
   //重新把count的值绑定在数量文本框里
   amounts[index].value = count;
   //当前操作端口的价格也要重新计算
@@ -68,5 +76,18 @@ function delete1() {
     var del = document.getElementById("first");
     del.parentNode.removeChild(del);
     alert("刪除成功！！");
+  }
+}
+
+function checkStock(index) {
+  var amounts = document.getElementsByName("amount");
+  var stocks = document.getElementsByName("stock");
+  var count = parseInt(amounts[index].value);
+  var stock = parseInt(stocks[index].value);
+
+  if (count > stock) {
+    alert("庫存不足，無法選購該數量");
+    // 將數量設置為庫存量
+    amounts[index].value = stock;
   }
 }
