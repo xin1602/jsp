@@ -61,13 +61,25 @@
                         }
                     }
             }
-                        int bookNumber=0;
-                        while(bookNumber < 4){
+                        //設定Array list 將總本數推入再運用shuffle打亂
+                        List num = new ArrayList();
+                        for(int i=0;i<=n;i++){
+                            num.add(i);
+                        }
+                        Collections.shuffle(num);
+
+                        //判斷已輸出四本符合條件就跳出回圈
+                        int book_out_Number=0;
                         String category = (String) session.getAttribute("category");
-                        sql = "select * from `products` where `category` = '" + category + "' && `product_id` = '" + (rand.nextInt(n) + 1) + "'";
-                        rs=con.createStatement().executeQuery(sql);
-                        while(rs.next()){
-                            bookNumber++;
+                            for(int i=0;i < num.size();i++){
+                                if(book_out_Number==4){
+                                    break;
+                                }
+                                else{
+                                    sql = "select * from `products` where `category` = '" + category + "' && `product_id` = '" + num.get(i) + "'";
+                                    rs=con.createStatement().executeQuery(sql);
+                                    while(rs.next()){
+                                    book_out_Number++;
 
 %>
                                 <div class="recom">
@@ -77,9 +89,10 @@
                                     <p><%=rs.getString(3)%></p>
                                 </div>
 <%
+                                
                         }
-                    
-            }
+                    }
+                }
         }   
     } 
     //如果沒有使用者登入
@@ -109,7 +122,7 @@
             int love_click=Integer.parseInt((String)session.getAttribute("sum_love_count"));
             int suspense_click=Integer.parseInt((String)session.getAttribute("sum_suspense_count"));
             int fantasy_click=Integer.parseInt((String)session.getAttribute("sum_fantasy_count")); 
-            out.print(horry_click+love_click+suspense_click+fantasy_click);
+            
             ArrayList<Integer> click = new ArrayList<Integer>();
             click.add(horry_click);
             click.add(love_click);
@@ -142,13 +155,25 @@
                         }
                     }
             }
-            int bookNumber=0;
-            while(bookNumber < 4){
-                String category = (String) session.getAttribute("category");
-                sql = "select * from `products` where `category` = '" + category + "' && `product_id` = '" + (rand.nextInt(n) + 1) + "'";
-                rs=con.createStatement().executeQuery(sql);
-                while(rs.next()){
-                    bookNumber++;
+            //設定Array list 將總本數推入再運用shuffle打亂
+            List num = new ArrayList();
+            for(int i=0;i<=n;i++){
+                num.add(i);
+            }
+            Collections.shuffle(num);
+
+            //判斷已輸出四本符合條件就跳出回圈
+            int book_out_Number=0;
+            String category = (String) session.getAttribute("category");
+                for(int i=0;i < num.size();i++){
+                    if(book_out_Number==4){
+                        break;
+                    }
+                    else{
+                        sql = "select * from `products` where `category` = '" + category + "' && `product_id` = '" + num.get(i) + "'";
+                        rs=con.createStatement().executeQuery(sql);
+                        while(rs.next()){
+                        book_out_Number++;
 %>
                     <div class="recom">
                         <a href="book.jsp?number=<%=rs.getString(1)%>">
@@ -157,7 +182,7 @@
                         <p><%=rs.getString(3)%></p>
                     </div>  
 <%
-    } }  }
+    } }  } } 
 %>
     </div>
 </div>

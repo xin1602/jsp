@@ -35,7 +35,7 @@ else if(product_type.equals("科幻")){
 if(request.getParameter("editOrDelete").equals("刪除")){
     sql="delete from `products` where `product_id`='"+product_id+"'";
     con.createStatement().execute(sql);
-    out.print("<script>alert('商品刪除成功！'); window.location='m_edit.jsp'</script>");
+    out.print("<script>alert('商品刪除成功！'); window.location='m_search.jsp'</script>");
 }
 else{
     //Step2. 判斷輸入格都必須有東西傳入 除了照片路徑
