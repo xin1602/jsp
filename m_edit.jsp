@@ -12,6 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/manage.css">
     <link rel="stylesheet" href="css/m_shelves.css">
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
 </head>
 
 <nav>
@@ -45,22 +50,22 @@
                     out.print("<p style='color: red; font-weight:bolder; font-size:20px' >查無此商品！</p>");
                 }
                 else{
-                        sql="select * from `products` where `product_id` like '%"+search+"%' or `product_name` like '%"+search+"%' or `ISBN` like '%"+search+"%'";
+                        sql="select * from `products` where `product_id` = '"+search+"' or `product_name` like '%"+search+"%' or `ISBN` = '"+search+"'";
                         rs=con.createStatement().executeQuery(sql);
                         while(rs.next()){
     %>
     <form action="edit_product.jsp" method="post">
         <table class="m_shelves">
-            <tr>
-                <td class="m_text">
+            <tr class="hide">
+                <td class="m_text,hide">
                     產品編號
                 </td>
-                <td class="m_text">
+                <td class="m_text,hide">
                     <input type="text" name="ProductID" value="<%=rs.getString(1)%>" readonly>
                     <div style="font-size: 14px;">※不可更改</div> 
                 </td>
             </tr>
-
+ 
             <tr>
                 <td class="m_text">
                     產品名稱
