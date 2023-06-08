@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="setsql.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,13 @@
     <link rel="stylesheet" href="css/book.css">
     <link rel="stylesheet" href="css/main.css">
     <script>
+    <%
+        String number=request.getParameter("number");
+        session.setAttribute("number",number);
+        sql="select * from `products` where `product_id`='"+number+"'";
+        rs=con.createStatement().executeQuery(sql);
+        rs.next();
+    %>
         function minus(num) {
             var number = Number(document.getElementsByClassName("input_num")[num].value);
             if (number > 1) {
@@ -21,29 +29,30 @@
         }
         function add(num) {
             var number = Number(document.getElementsByClassName("input_num")[num].value);
-            if (number < 100) {
+            //判斷庫存數 若大於庫存則無法加入
+            if (number < <%=rs.getString("stock")%>) {
                 document.getElementsByClassName("input_num")[num].value = number + 1;
             }
         }
+        //加入購物車
         function f1() {
             document.f.action="to_cart.jsp?mode=1";
             document.f.submit();
         }
+        //直接購買
         function f2() {
             document.f.action="to_cart.jsp?mode=2";
             document.f.submit();
-        }        
+        }
     </script>
 </head>
 
 <%@ include file="nav.jsp"%>
 
 <body>
-    <%@ include file="setsql.jsp"%>
+
     <!-- 讀取products.jsp超連結的parameter以方便設定product_id -->
     <%
-        String number=request.getParameter("number");
-        session.setAttribute("number",number);
         sql="select * from `products` where `product_id`='"+number+"'";
         rs=con.createStatement().executeQuery(sql);
         rs.next();
@@ -94,7 +103,15 @@
                     <br>ISBN：<%= rs.getString(10) %></br>
                     <br>優惠價：<%= rs.getString(7) %></br>
                     <br>庫存：<%= rs.getString(11) %></br>
-                
+
+                    <%
+                        sql="select * from `products` where `product_id`='"+number+"'";
+                        rs=con.createStatement().executeQuery(sql);
+                        rs.next();
+                        if(Integer.parseInt(rs.getString("stock"))==0){
+                            out.print("<br><br><h3 style='color:red;'>暫無庫存，無法購買</h3>");
+                        }else{
+                    %>
                     <div class="shopping">
                         <form name="f" action="" method="post">
                             <input type="button" value="-" class="btn minus" onclick="minus(0)"/>
@@ -104,6 +121,9 @@
                             <button class="button_shop purchase" onclick="f2()">直接購買</button>
                         </form>
                     </div>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>
