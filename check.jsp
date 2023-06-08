@@ -52,14 +52,14 @@
                 <td><%=cartP.getString("product_name")%></td>
                 <td>NT$<%=cartP.getString("price")%></td>
                 <td><%=amount[num]%></td>
-                <td>NT$<%=cartlist.getString("price")%></td>
+                <td>NT$<%=Integer.parseInt(amount[num]) * Integer.parseInt(cartP.getString("price"))%></td>
             </tr>
 
             <%
-                num++;
-                sub_total+=Integer.valueOf(cartlist.getString("price"));
+                sub_total+=Integer.parseInt(amount[num]) * Integer.parseInt(cartP.getString("price"));
                 discount=(int)Math.floor(sub_total*0.1);
                 total=sub_total-discount;
+                num++;
                 }
              %>
 
