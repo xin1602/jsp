@@ -23,9 +23,9 @@
     <%@ include file="setsql.jsp"%>
     <% 	
    	String keyword = request.getParameter("keyword");
-    String countQuery = "SELECT COUNT(*) FROM products WHERE category LIKE ? OR product_name LIKE ? OR author LIKE ? OR publishing_house LIKE ? OR info LIKE ? OR ISBN LIKE ?";
+    String countQuery = "SELECT COUNT(*) FROM products WHERE category LIKE ? OR product_name LIKE ? OR author LIKE ? OR publishing_house LIKE ? OR ISBN LIKE ?";
     stmt = con.prepareStatement(countQuery);
-    for (int i = 1; i <= 6; i++) {
+    for (int i = 1; i <= 5; i++) {
         stmt.setString(i, "%" + keyword + "%");
     }
     rs = stmt.executeQuery();
@@ -34,11 +34,11 @@
         n = rs.getInt(1);
         // 取得資料有幾筆
     }
-    String searchQuery = "SELECT * FROM products WHERE category LIKE ? OR product_name LIKE ? OR author LIKE ? OR publishing_house LIKE ? OR info LIKE ? OR ISBN LIKE ?";
+    String searchQuery = "SELECT * FROM products WHERE category LIKE ? OR product_name LIKE ? OR author LIKE ? OR publishing_house LIKE ? OR ISBN LIKE ?";
     stmt = con.prepareStatement(searchQuery);
 
     // 將關鍵字設定到 Prepared Statement 的參數中
-    for (int i = 1; i <= 6; i++) {
+    for (int i = 1; i <= 5; i++) {
         stmt.setString(i, "%" + keyword + "%");
     }
     rs = stmt.executeQuery();
