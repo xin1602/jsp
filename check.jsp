@@ -103,7 +103,7 @@
             <form action="sand_order.jsp" method="post">
                 <label for="name">姓　　名：</label>
                 <input type="text" id="name" name="name" value="<%=rs.getString("member_name")%>" required><br>
-                <label for="phone">連絡電話：</label>
+                <label for="phone">聯絡電話：</label>
                 <input type="text" id="phone" name="phone" value="<%=rs.getString("phone_number")%>" required><br>
                 <label for="email">電子信箱：</label>
                 <input type="email" id="email" name="email" value="<%=rs.getString("email")%>" required><br>
