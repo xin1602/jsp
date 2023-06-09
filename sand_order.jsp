@@ -20,7 +20,7 @@
         String total=(String)session.getAttribute("total");
 		String O_No1="";
 		String O_No="";
-		sql = "SELECT * FROM `cart` WHERE `member_id`='" + userId + "'"  ;       //列出該會員的購物車清單
+		sql = "SELECT * FROM `cart` WHERE `member_id`='"+userId+"' AND order_no is NULL"  ;       //列出該會員的購物車清單
 		rs =con.createStatement().executeQuery(sql);
 
 		DateTimeFormatter Dformat = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -43,7 +43,7 @@
 		}
 		while(rs.next()){
 			sql = "UPDATE cart SET order_no='"+O_No+"' WHERE `member_id`='"+userId+"' AND order_no is null ";
-			con.createStatement().execute(sql);
+			con.createStatement().executeUpdate(sql);
 
 			sql = "SELECT * FROM `products` WHERE `product_id`='" + rs.getString("product_id")+ "'"  ;
 			ResultSet rsP =con.createStatement().executeQuery(sql);
@@ -53,7 +53,7 @@
 			int stock=Integer.parseInt(rsP.getString("stock"))-Integer.parseInt(rs.getString("quantity"));
 
 			sql ="UPDATE products SET  sale='"+sale+"', stock='"+stock+"' WHERE `product_id`='" + rs.getString("product_id")+ "'";
-			con.createStatement().execute(sql);
+			con.createStatement().executeUpdate(sql);
 
 		}
 
