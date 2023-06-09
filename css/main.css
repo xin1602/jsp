@@ -87,7 +87,6 @@ nav a {
 body {
   background-color: #171717;
   color: #EDEDED;
-  height: auto;
 }
 
 /*動態廣告*/
@@ -197,7 +196,7 @@ h1 {
 }
 
 .sec_timeline {
-  height: 2600px;
+  min-height: 3000px;
   width: 100%;
   margin-top: 30px;
 }
@@ -247,7 +246,7 @@ h1 {
 .timeline {
   position: relative;
   max-width: 1000px;
-  height: 2500px;
+  min-height: 2900px;
   margin: 0 auto;
 }
 
@@ -309,7 +308,7 @@ h1 {
 /* The actual content */
 .content {
   width: 400px;
-  height: 550px;
+  min-height: 800px;
   padding: 10px 10px;
   border: outset;
   position: relative;
@@ -318,7 +317,7 @@ h1 {
 }
 
 .content p {
-  height: 220px;
+  min-height: 300px;
   overflow: hidden;
 }
 

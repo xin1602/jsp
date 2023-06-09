@@ -1,27 +1,29 @@
 * {
-  font-family: 標楷體, Arial;
+    font-family: 標楷體, Arial;
 }
 
 p {
-  margin: 50px auto;
-  color: white;
-  text-align: center;
-  font-size: 30pt;
-  font-weight: bold;
+    margin: 50px auto;
+    color: white;
+    text-align: center;
+    font-size: 30pt;
+    font-weight: bold;
 }
 
 .analyze {
-  border-color: #cf3030;
-  width: 1150px;
-  margin: 50px auto;
-  text-align: center;
-  font-size: 15pt;
+    border-color: #cf3030;
+    width: 1150px;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 15pt;
 }
 
 .analyze_text {
-  height: 350px;
+    height: 350px;
+
+
 }
 
 .analyze_text2 {
-  width: 400px;
+    width: 400px;
 }
