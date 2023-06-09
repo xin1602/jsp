@@ -59,6 +59,11 @@
                 sub_total+=Integer.parseInt(amount[num]) * Integer.parseInt(cartP.getString("price"));
                 discount=(int)Math.floor(sub_total*0.1);
                 total=sub_total-discount;
+                sql = "UPDATE cart SET quantity='"+amount[num]+"' ,price='"+(Integer.parseInt(amount[num]) * Integer.parseInt(cartP.getString("price")))+"' WHERE `member_id`='" + userId+ "' AND `product_id`='"+cartlist.getString("product_id")+ "' AND `order_no` IS NULL" ;
+			    con.createStatement().executeUpdate(sql);
+                session.setAttribute("sub_total",Integer.toString(sub_total));
+                session.setAttribute("discount",Integer.toString(discount));
+                session.setAttribute("total",Integer.toString(total));
                 num++;
                 }
              %>
