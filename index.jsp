@@ -127,15 +127,15 @@
     <div class="slideshow-container">
 
         <div class="mySlides fade">
-          <a href="product.html"><img src="img/slideshow/1.png" style="width:100%"></a>
+          <a href="horry.jsp"><img src="img/slideshow/1.png" style="width:100%"></a>
         </div>
         
         <div class="mySlides fade">
-          <a href="product.html"><img src="img/slideshow/2.png" style="width:100%"></a>
+          <a href="love.jsp"><img src="img/slideshow/2.png" style="width:100%"></a>
         </div>
         
         <div class="mySlides fade">
-          <a href="book.html"><img src="img/slideshow/3.png" style="width:100%"></a>
+          <a href="book.jsp?number=14"><img src="img/slideshow/3.png" style="width:100%"></a>
         </div>
         
         <a class="prev" onclick="plusSlides(-1)">❮</a>
