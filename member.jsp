@@ -26,11 +26,15 @@
 	        <script>
 	            alert("無效的輸入。請確保填寫必填欄位。");
 	        </script>
-		  <% } else { %>
+		  <% } else if (error == "duplicate") { %>
 	        <script>
+	            alert("已有重覆email帳號，請重新輸入。");
+	        </script>
+		<% } else { %>
+		    <script>
 	            alert("發生錯誤。請稍後再試。");
 	        </script>
-		<% }
+		<%}
 	  }
 	  session.removeAttribute("error");
 	%>
