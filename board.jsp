@@ -4,7 +4,7 @@
     sql="select count(*) from `board` where `product_id` = ?";
     stmt = con.prepareStatement(sql);
     stmt.setString(1,number);
-    rs=stmt.executeQuery(sql);
+    rs=stmt.executeQuery();
     String star="★";
     while(rs.next()){
         int comment_number=rs.getInt(1);
@@ -45,7 +45,7 @@
         sql="select * from `board` where `product_id`= ? order by `comments_date` desc";
         stmt=con.prepareStatement(sql);
         stmt.setString(1,number);
-        rs=stmt.executeQuery(sql);
+        rs=stmt.executeQuery();
 %>
         <div class="comment">
             <h1>留言區</h1>
