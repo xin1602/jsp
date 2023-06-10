@@ -33,8 +33,10 @@ else if(product_type.equals("科幻")){
 
 //Step1. 判斷是不是要刪除商品 
 if(request.getParameter("editOrDelete").equals("刪除")){
-    sql="delete from `products` where `product_id`='"+product_id+"'";
-    con.createStatement().execute(sql);
+    sql="delete from `products` where `product_id`= ? ";
+    stmt = con.prepareStatement(sql);
+    stmt.setString(1,product_id);
+    stmt.executeUpdate();
     out.print("<script>alert('商品刪除成功！'); window.location='m_search.jsp'</script>");
 }
 else{
@@ -46,13 +48,41 @@ else{
     else{
         //Step2. 判斷照片路徑是否更改
         if(product_photo.equals("")){
-            sql = "update `products` set `category`='"+product_type+"', `product_name`='"+product_name+"', `author`='"+product_author+"', "+"`publishing_house`='"+product_publishinghouse+"', `publishing_date`='"+product_publishingdate+"', `price`='"+product_price+"', "+"`info`='"+product_info+"', `ISBN`='"+product_isbn+"', `stock`='"+product_quantity+"' where `product_id`='"+product_id+"'";
-            con.createStatement().execute(sql);
+            sql = "update `products` set `category`=?, `product_name`=?, `author`=?, "+"`publishing_house`=?, `publishing_date`=?, `price`=?, `info`=?, `ISBN`=?, `stock`=? where `product_id`=?";
+            stmt=con.prepareStatement(sql);
+            
+            stmt.setString(1,product_type);
+            stmt.setString(2,product_name);
+            stmt.setString(3,product_author);
+            stmt.setString(4,product_publishinghouse);
+            stmt.setString(5,product_publishingdate);
+            stmt.setString(6,product_price);
+            stmt.setString(7,product_info);
+            stmt.setString(8,product_isbn);
+            stmt.setString(9,product_quantity);
+            stmt.setString(10,product_id);
+            
+            stmt.executeUpdate();
             out.print("<script>alert('商品更新成功！'); window.location='index.jsp'</script>");
         }
         else{
-            sql = "update `products` set `category`='"+product_type+"', `product_name`='"+product_name+"', `author`='"+product_author+"', "+"`publishing_house`='"+product_publishinghouse+"', `publishing_date`='"+product_publishingdate+"', `price`='"+product_price+"', "+"`info`='"+product_info+"', `img`='"+category_english + "/" + product_photo +"', `ISBN`='"+product_isbn+"', `stock`='"+product_quantity+"' where `product_id`='"+product_id+"'";   
-            con.createStatement().execute(sql);
+            sql = "update `products` set `category`=?, `product_name`=?, `author`=?, "+"`publishing_house`=?, `publishing_date`=?, `price`=?, `info`=?, `img`=?, `ISBN`=?, `stock`=? where `product_id`=?";   
+            stmt=con.prepareStatement(sql);
+            
+            //String product_img=category+"/"+product_img;
+            stmt.setString(1,product_type);
+            stmt.setString(2,product_name);
+            stmt.setString(3,product_author);
+            stmt.setString(4,product_publishinghouse);
+            stmt.setString(5,product_publishingdate);
+            stmt.setString(6,product_price);
+            stmt.setString(7,product_info);
+            stmt.setString(8,category_english+"/"+product_photo);
+            stmt.setString(9,product_isbn);
+            stmt.setString(10,product_quantity);
+            stmt.setString(11,product_id);
+            
+            stmt.executeUpdate();
             out.print("<script>alert('商品更新成功！'); window.location='index.jsp'</script>");
         }
     }    
