@@ -34,13 +34,30 @@
         out.print("<script>alert('請完整填完資訊再上架！'); window.location='m_shelves.jsp'</script>");
     }
     else{
-        sql="select * from `products` where `ISBN`='"+product_isbn+"'";
-        rs=con.createStatement().executeQuery(sql);
+        sql="select * from `products` where `ISBN`=?";
+        stmt = con.prepareStatement(sql);
+        stmt.setString(1,product_isbn);
+        rs=stmt.executeQuery();
         if(rs.next())
             out.print("<script>alert('已有此商品，請重新確認！'); window.location='m_shelves.jsp'</script>");
         else{
-            sql = "INSERT INTO `products` (`category`, `product_name`, `author`, `publishing_house`, `publishing_date`, `price`, `info`, `img`, `ISBN`, `stock`, `sale`) " +"VALUES ('" + product_type + "', '" + product_name + "', '" + product_author + "', '" + product_publishinghouse + "', '" + product_publishingdate + "', '" + product_price + "', '" + product_info + "', '/" + category_english + "/" + product_photo + "', '" + product_isbn + "', '" + product_quantity + "', '0')";
-            con.createStatement().execute(sql);
+            sql = "INSERT INTO `products` (`category`, `product_name`, `author`, `publishing_house`, `publishing_date`, `price`, `info`, `img`, `ISBN`, `stock`, `sale`) " +"VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            stmt=con.prepareStatement(sql);
+            
+            stmt.setString(1,product_type);
+            stmt.setString(2,product_name);
+            stmt.setString(3,product_author);
+            stmt.setString(4,product_publishinghouse);
+            stmt.setString(5,product_publishingdate);
+            stmt.setString(6,product_price);
+            stmt.setString(7,product_info);
+            stmt.setString(8,category_english+"/"+product_photo);
+            stmt.setString(9,product_isbn);
+            stmt.setString(10,product_quantity);
+            stmt.setString(11,"0");
+            
+            stmt.executeUpdate();
+   
             out.print("<script>alert('商品上架成功！'); window.location='index.jsp'</script>");
         }
     }    

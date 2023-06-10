@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     
-    sql="select count(*) from `board` where `product_id` = '"+number+"'";
-    rs=con.createStatement().executeQuery(sql);
+    sql="select count(*) from `board` where `product_id` = ?";
+    stmt = con.prepareStatement(sql);
+    stmt.setString(1,number);
+    rs=stmt.executeQuery(sql);
     String star="★";
     while(rs.next()){
         int comment_number=rs.getInt(1);
@@ -40,8 +42,10 @@
 <%
     }
     else{
-        sql="select * from `board` where `product_id`='"+number+"'order by `comments_date` desc";
-        rs=con.createStatement().executeQuery(sql);
+        sql="select * from `board` where `product_id`= ? order by `comments_date` desc";
+        stmt=con.prepareStatement(sql);
+        stmt.setString(1,number);
+        rs=stmt.executeQuery(sql);
 %>
         <div class="comment">
             <h1>留言區</h1>
