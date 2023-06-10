@@ -17,8 +17,11 @@
     <%
         String number=request.getParameter("number");
         session.setAttribute("number",number);
-        sql="select * from `products` where `product_id`='"+number+"'";
-        rs=con.createStatement().executeQuery(sql);
+
+        String query = "select * from `products` where `product_id`=?";
+        stmt = con.prepareStatement(query);
+        stmt.setString(1, number);
+        rs=stmt.executeQuery();
         rs.next();
     %>
         function minus(num) {
@@ -53,8 +56,10 @@
 
     <!-- 讀取products.jsp超連結的parameter以方便設定product_id -->
     <%
-        sql="select * from `products` where `product_id`='"+number+"'";
-        rs=con.createStatement().executeQuery(sql);
+        query = "select * from `products` where `product_id`=?";
+        stmt = con.prepareStatement(query);
+        stmt.setString(1, number);
+        rs=stmt.executeQuery();
         rs.next();
         if(loggedIn){
             String userId=(String)session.getAttribute("userId");
@@ -105,8 +110,10 @@
                     <br>庫存：<%= rs.getString(11) %></br>
 
                     <%
-                        sql="select * from `products` where `product_id`='"+number+"'";
-                        rs=con.createStatement().executeQuery(sql);
+                        query = "select * from `products` where `product_id`=?";
+                        stmt = con.prepareStatement(query);
+                        stmt.setString(1, number);
+                        rs=stmt.executeQuery();
                         rs.next();
                         if(Integer.parseInt(rs.getString("stock"))==0){
                             out.print("<br><br><h3 style='color:red;'>暫無庫存，無法購買</h3>");

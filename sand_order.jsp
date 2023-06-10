@@ -57,9 +57,20 @@
 
 		}
 
-		sql = "INSERT INTO `order` (order_no, member_id, date,status,recipient_name,recipient_phome_number,recipient_address, payment, sub_total, discount,total)";
-		sql+=" VALUES ('"+O_No+"', '"+userId+"', '"+time.toString()+"','待出貨','"+name+"','"+phone+"','"+address+"','"+payment+"','"+sub_total+"','"+discount+"','"+total+"')" ;
-		con.createStatement().execute(sql);
+		String query = "INSERT INTO `order` (order_no, member_id, date,status,recipient_name,recipient_phome_number,recipient_address, payment, sub_total, discount,total) VALUES (?, ?, ?,'待出貨',?,?,?,?,?,?,?)";
+		stmt = con.prepareStatement(query);
+		stmt.setString(1, O_No);
+		stmt.setString(2, userId);
+		stmt.setString(3, time.toString());
+		stmt.setString(4, name);
+		stmt.setString(5, phone);
+		stmt.setString(6, address);
+		stmt.setString(7, payment);
+		stmt.setString(8, sub_total);
+		stmt.setString(9, discount);
+		stmt.setString(10, total);
+		stmt.execute();
+
 		con.close();
 
 		out.print("<script>alert('訂購成功！回首頁！');window.location='index.jsp';</script>");
