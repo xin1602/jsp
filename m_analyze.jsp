@@ -13,6 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/manage.css">
     <link rel="stylesheet" href="css/m_analyze.css">
+    <%
+      boolean loggedIn = false;
+      boolean adminCheck = false;
+      if (session != null && session.getAttribute("loggedIn") != null) {
+        loggedIn = (Boolean) session.getAttribute("loggedIn");
+        adminCheck = (Boolean) session.getAttribute("userId").equals("1");
+      }
+      if (!loggedIn || !adminCheck) {
+        out.print("<script>alert('非管理員帳號'); window.location='index.jsp'</script>");
+      }
+    %>
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
