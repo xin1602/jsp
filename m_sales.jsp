@@ -23,7 +23,17 @@
     <!--會員登入/會員資料-->
     <div class="member"><a href="manage.jsp"><img src="img/member.png" alt="member"></a></div>
 </nav>
-
+<%
+    boolean loggedIn = false;
+    boolean adminCheck = false;
+    if (session != null && session.getAttribute("loggedIn") != null) {
+        loggedIn = (Boolean) session.getAttribute("loggedIn");
+        adminCheck = (Boolean) session.getAttribute("userId").equals("1");
+    }
+    if (!loggedIn || !adminCheck) {
+        out.print("<script>alert('非管理員帳號'); window.location='index.jsp'</script>");
+    }
+%>
 </head>
 <body>
     <p>銷貨紀錄</p>
