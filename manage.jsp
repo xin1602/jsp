@@ -28,7 +28,7 @@
     adminCheck = (Boolean) session.getAttribute("userId").equals("1");
   }
   if (!loggedIn || !adminCheck) {
-	  out.print("<script>alert('非管理員帳號'); window.location='login.jsp'</script>");
+	  out.print("<script>alert('非管理員帳號'); window.location='index.jsp'</script>");
   }
 %>
 
