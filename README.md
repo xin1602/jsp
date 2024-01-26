@@ -2,7 +2,7 @@
 #### 網站連結(僅前端展示)：https://karaliang.github.io/BookBar/product.html
 
 ### 一、系統架構圖
-<img src='img/show/architechture_diagram.png'> 
+<img src='img/show/architechture_diagram.png' width="400"> 
 
 ### 二、操作說明與流程圖
 
