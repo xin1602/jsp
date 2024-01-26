@@ -1,4 +1,4 @@
-# 網路書店
+# 看Bar！網路書店
 #### 網站連結(僅前端展示)：https://karaliang.github.io/BookBar/product.html
 
 ### 一、系統架構圖
@@ -7,10 +7,14 @@
 ### 二、操作說明與流程圖
 
 #### 1.會員管理
+- 說明：帳號註冊時我們最少需要蒐集姓名、email、密碼等資訊，其餘資訊則是因應使用者點閱分析、購物車購買商品所需進而設立的欄位，包含性別、電話號碼、地址與生日。
 <img src='img/show/login.png'> 
 <img src='img/show/member.png'> 
 
 #### 2.後台管理
+- 商品頁面說明：分為三大區塊，商品資訊區、留言區、推薦商品區。第一區塊抓取number比對資料庫product_id輸出相應產品資訊。
+- 搜尋頁面說明：當使用者在搜尋框輸入訊息並按下搜尋的按鈕，就會依據使用者所輸入的資訊和資料庫的書名、IBSN等資料進行比對，之後顯示在搜尋結果的頁面上。	
+
 <img src='img/show/manage.png'> 
 
 #### 3.商品頁面與搜尋
@@ -20,7 +24,7 @@
 <img src='img/show/cart.png'> 
 
 #### 5.留言版
-<img src='img/show/board.ng'> 
+<img src='img/show/board.png'> 
 
 #### 6.使用者點閱分析與推薦系統會員管理
 <img src='img/show/analyze.png'> 
