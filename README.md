@@ -2,7 +2,9 @@
 #### 網站連結(僅前端展示)：https://karaliang.github.io/BookBar/product.html
 
 ### 一、系統架構圖
-<img src='img/show/architechture_diagram.png' width="400"> 
+<div align=center>
+    <img src='img/show/architechture_diagram.png' width="500"> 
+</div> 
 
 ### 二、操作說明與流程圖
 
@@ -14,8 +16,8 @@
 
 
 <div align=center>
-    <img src='img/show/login.png'> 
-    <img src='img/show/member.png'> 
+    <img src='img/show/login.png' width="400"> 
+    <img src='img/show/member.png' width="300"> 
 </div> 
 
 
@@ -27,9 +29,9 @@
 - 銷貨紀錄：進入 m_sales.jsp 將資料庫order內容依據下單日期排序一一讀出並顯示。顯示欄位有：訂單編號、下單時間、訂單狀態、每筆商品的商品的購買數量、金額、所有商品的小計、優惠、合計(折扣後)。
 - 瀏覽者點閱行為分析：進入 m_analyze.jsp，計算各類型點擊次數、點擊人數，並從資料庫呼叫預存程序(stored procedure)來抓到各類型年齡分佈與性別比例，畫面則是利用Google Charts的柱狀圖(年齡分佈)與圓餅圖(性別比例)呈現。
 
-
-<img src='img/show/manage.png'> 
-
+<div align=center>
+    <img src='img/show/manage.png'> 
+</div> 
 #### 3.商品頁面與搜尋
 - 商品頁面說明：透過nav去選擇欲達到的產品分類頁面。由於前端使用表格來呈現商品排列頁面（一行四本），因此相對對邏輯作出調整。以horry.jsp為例，先讀取恐怖類別總共有幾本書，再運用迴圈判斷當前讀取到第幾本書，每一行的第一本除了要輸出商品本身還要加上<tr>，而第四本則是要加上</tr>。接著點選商品即可導向商品詳細資訊頁面(book.jsp?number=productid)
 - 搜尋商品說明：在nav提供商品搜尋並限制只能輸入中英文與數字，輸入內容後會藉由search.jsp抓取輸入內容，接著與資料庫內容比對，讀取符合條件的總筆數，再運用迴圈與商品類別類似的手法輸出結果。
@@ -64,8 +66,9 @@
     - (a)	個人化廣告：以使用者點閱次數預測他 / 她感興趣的類型，投放相對應的個人化廣告，提高消費者的購買率。
     - (b)	推薦商品：以使用者點閱次數預測他 / 她感興趣的類型，投放相對應類型的商品，提高消費者的購買其他商品的機率。
     - (c)	使用者點閱分析：利用google的chart套件將點閱的人數、次數、年齡與性別等資料利用SQL中view, procedure等方法繪製出圖表，放在網頁中對應的欄位上。藉此可知道某類型商品的潛在客戶為哪些族群。
-<img src='img/show/analyze.png'> 
-
+<div align=center>
+    <img src='img/show/analyze.png'> 
+</div> 
 
 
 
